@@ -17,7 +17,7 @@
 .tasbeeh-card{margin-top:25px;background:rgba(255,255,255,.82);border:1px solid rgba(24,61,50,.12);border-radius:30px;padding:28px 22px;box-shadow:0 20px 55px rgba(36,58,49,.09);text-align:center}.dhikr-list{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 10px;margin-bottom:8px;scrollbar-width:thin}.dhikr-option{flex:0 0 auto;border:1px solid rgba(24,61,50,.12);background:#f7f1e2;color:#5f7169;border-radius:16px;padding:9px 12px;font:600 12px Cairo;cursor:pointer}.dhikr-option.active{background:#e5ece7;color:#183d32;border-color:rgba(167,125,56,.38)}.dhikr-target{font-size:11px;color:#8a938e;margin-top:2px}
 .zikr-name{font-family:Amiri,serif;font-size:32px;color:#173c31;line-height:1.7}
 .count{font-family:Amiri,serif;font-size:70px;line-height:1;color:#a77d38;margin:20px 0 5px}
-.target{color:#7a867f;font-size:13px}
+.target{color:#7a867f;font-size:13px}.fadhl{margin:18px auto 0;padding-top:13px;border-top:1px solid rgba(151,113,48,.18);max-width:560px}.fadhl-title{font-size:12px;color:#967238;font-weight:700;margin-bottom:4px}.fadhl-text{font-size:11px;line-height:1.8;color:#7a857f}
 .tap-circle{width:180px;height:180px;border-radius:50%;border:10px solid #dfe7e2;background:#183d32;color:#fff;font:700 21px Cairo;cursor:pointer;margin:25px auto 18px;display:grid;place-items:center;box-shadow:0 14px 30px rgba(24,61,50,.2);transition:.12s}
 .tap-circle:active{transform:scale(.95)}
 .reset{border:0;background:none;color:#a77d38;font:600 13px Cairo;cursor:pointer}
@@ -46,6 +46,7 @@
 <div class="zikr-name" id="zikrName">سُبْحَانَ اللَّهِ وَبِحَمْدِهِ</div>
 <div class="count" id="count">0</div>
 <div class="target">من 100</div>
+<div class="fadhl"><div class="fadhl-title">فضل الذكر</div><div class="fadhl-text" id="fadhlText"></div></div>
 <button class="tap-circle" id="tap">اضغط</button>
 <button class="reset" id="reset">إعادة العداد</button>
 <div class="done-message" id="done">🤍 أحسنت، أتممت 100 تسبيحة</div>
@@ -64,9 +65,20 @@ const dhikrs=[
  {text:"أَسْتَغْفِرُ اللَّهَ",target:100},
  {text:"اللَّهُمَّ صَلِّ وَسَلِّمْ عَلَى نَبِيِّنَا مُحَمَّدٍ",target:100}
 ];
+const fadhl=[
+"ورد في السنة فضل عظيم لهذا الذكر؛ ومن قاله مائة مرة حُطَّت عنه خطاياه وإن كانت مثل زبد البحر، كما جاء في الحديث.",
+"التسبيح من الذكر الذي يُثنى فيه على الله وتنزيهه، وهو من أحب الكلام إلى الله.",
+"الحمد لله كلمة تجمع الثناء والشكر لله، وقد ورد أنها تملأ الميزان.",
+"الله أكبر تعظيم لله وإقرار بأن الله أعظم من كل شيء، وهي من أعظم ألفاظ الذكر.",
+"لا إله إلا الله كلمة التوحيد، وهي أفضل الذكر كما ورد في الحديث.",
+"اجتماع التسبيح والحمد والتكبير من جوامع الذكر، وهي كلمات عظيمة في الأجر والفضل.",
+"لا حول ولا قوة إلا بالله من كنوز الجنة، وفيها تفويض القوة والقدرة لله تعالى.",
+"الاستغفار من أسباب مغفرة الذنوب والرجوع إلى الله، وكان النبي ﷺ يكثر من الاستغفار.",
+"الصلاة والسلام على النبي ﷺ من الأعمال التي رغب فيها النبي ﷺ، وجاء فيها أن من صلى عليه صلاة صلى الله عليه بها عشرًا."
+];
 let selected=0,count=0;
-const countEl=document.getElementById("count"),done=document.getElementById("done"),list=document.getElementById("dhikrList"),nameEl=document.getElementById("zikrName"),targetEl=document.querySelector(".target");
-function renderDhikr(){list.innerHTML=dhikrs.map((d,i)=>'<button class="dhikr-option '+(i===selected?"active":"")+'" data-i="'+i+'">'+d.text+'</button>').join("");nameEl.textContent=dhikrs[selected].text;targetEl.textContent="من "+dhikrs[selected].target;count=0;countEl.textContent=0;done.classList.remove("show");list.querySelectorAll(".dhikr-option").forEach(b=>b.onclick=()=>{selected=Number(b.dataset.i);renderDhikr()})}
+const countEl=document.getElementById("count"),done=document.getElementById("done"),list=document.getElementById("dhikrList"),nameEl=document.getElementById("zikrName"),targetEl=document.querySelector(".target"),fadhlText=document.getElementById("fadhlText");
+function renderDhikr(){list.innerHTML=dhikrs.map((d,i)=>'<button class="dhikr-option '+(i===selected?"active":"")+'" data-i="'+i+'">'+d.text+'</button>').join("");nameEl.textContent=dhikrs[selected].text;targetEl.textContent="من "+dhikrs[selected].target;fadhlText.textContent=fadhl[selected];count=0;countEl.textContent=0;done.classList.remove("show");list.querySelectorAll(".dhikr-option").forEach(b=>b.onclick=()=>{selected=Number(b.dataset.i);renderDhikr()})}
 document.getElementById("tap").onclick=()=>{const target=dhikrs[selected].target;if(count<target) count++;countEl.textContent=count;if(count===target) done.textContent="🤍 أحسنت، أتممت "+target+" تسبيحة";if(count===target) done.classList.add("show")};
 document.getElementById("reset").onclick=()=>{count=0;countEl.textContent=0;done.classList.remove("show")};
 renderDhikr();
