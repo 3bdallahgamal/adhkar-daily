@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>الأذكار</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.adhkar-page{min-height:100svh;padding:25px 16px 45px;background:linear-gradient(180deg,#f8f5ec,#edf1ec)}
+.reader{width:min(760px,100%);margin:auto}
+.top{display:flex;justify-content:space-between;align-items:center;color:#718079;font-size:13px;margin-bottom:24px}
+.back{color:#a77d38;font-weight:700}
+.header{text-align:center;margin-bottom:22px}.header .icon{font-size:38px}.header h1{font-size:46px;margin:4px 0 5px}.header p{margin:0;color:#77857f;font-size:14px}
+.progress-wrap{background:#dfe7e2;border-radius:99px;height:7px;overflow:hidden;margin:18px 0 24px}.progress{height:100%;width:0;background:linear-gradient(90deg,#a77d38,#527d6c);transition:.3s}
+.counter{text-align:center;color:#75827c;font-size:13px;margin-bottom:12px}
+.card{background:rgba(255,255,255,.82);border:1px solid rgba(24,61,50,.12);border-radius:28px;padding:34px 28px;box-shadow:0 20px 55px rgba(36,58,49,.09);text-align:center}
+.zikr{font-family:Amiri,serif;font-size:clamp(26px,4vw,36px);line-height:2;color:#173c31}
+.repeat{margin:22px 0 17px;color:#7a867f;font-size:14px}
+.tap{border:0;border-radius:18px;padding:15px 30px;background:#183d32;color:#fff;font:700 15px Cairo;cursor:pointer;box-shadow:0 8px 20px rgba(24,61,50,.2);transition:.2s}.tap:active{transform:scale(.97)}
+.done{display:none;text-align:center;padding:28px}.done.show{display:block}.done h2{font-family:Amiri;font-size:38px;color:#183d32;margin:8px}.done p{color:#73817a}.restart{display:inline-block;margin-top:8px;color:#a77d38;font-weight:700}
+@media(max-width:650px){.adhkar-page{padding:18px 13px 30px}.top{margin-bottom:15px}.header h1{font-size:39px}.card{padding:27px 19px;border-radius:23px}.zikr{font-size:27px;line-height:1.95}}
+</style>
+</head>
+<body>
+<main class="adhkar-page">
+<div class="reader">
+  <div class="top"><a class="back" href="index.html">← الرئيسية</a><span id="session"></span></div>
+  <div class="header"><div class="icon" id="icon">🌅</div><h1 id="title">أذكار الصباح</h1><p>خذ لحظتك… واقرأ بهدوء.</p></div>
+  <div class="progress-wrap"><div class="progress" id="progress"></div></div>
+  <div class="counter" id="counter"></div>
+  <article class="card" id="card">
+    <div class="zikr" id="zikr"></div>
+    <div class="repeat" id="repeat"></div>
+    <button class="tap" id="tap">أتممت الذكر ✓</button>
+  </article>
+  <section class="done" id="done">
+    <div style="font-size:48px">🤍</div>
+    <h2>أحسنت</h2>
+    <p>أتممت أذكارك. تقبّل الله منك، وجعل يومك مليئًا بالسكينة.</p>
+    <a class="restart" href="index.html">العودة للرئيسية</a>
+  </section>
+</div>
+</main>
+<script>
+const morning=[
+["أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ.","مرة واحدة"],
+["اللَّهُمَّ بِكَ أَصْبَحْنَا وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ.","مرة واحدة"],
+["رَضِيتُ بِاللَّهِ رَبًّا، وَبِالإِسْلَامِ دِينًا، وَبِمُحَمَّدٍ ﷺ نَبِيًّا.","3 مرات"],
+["اللَّهُمَّ إِنِّي أَسْأَلُكَ العَفْوَ وَالعَافِيَةَ فِي الدُّنْيَا وَالآخِرَةِ.","مرة واحدة"],
+["بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ العَلِيمُ.","3 مرات"],
+["سُبْحَانَ اللَّهِ وَبِحَمْدِهِ.","100 مرة"],
+["آيَةُ الْكُرْسِيِّ — ﴿اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ...﴾","مرة واحدة"],
+["قُلْ هُوَ اللَّهُ أَحَدٌ، قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ، قُلْ أَعُوذُ بِرَبِّ النَّاسِ.","3 مرات"]
+];
+const evening=[
+["أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ.","مرة واحدة"],
+["اللَّهُمَّ بِكَ أَمْسَيْنَا وَبِكَ أَصْبَحْنَا، وَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ الْمَصِيرُ.","مرة واحدة"],
+["رَضِيتُ بِاللَّهِ رَبًّا، وَبِالإِسْلَامِ دِينًا، وَبِمُحَمَّدٍ ﷺ نَبِيًّا.","3 مرات"],
+["بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ العَلِيمُ.","3 مرات"],
+["سُبْحَانَ اللَّهِ وَبِحَمْدِهِ.","100 مرة"],
+["آيَةُ الْكُرْسِيِّ — ﴿اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ...﴾","مرة واحدة"],
+["قُلْ هُوَ اللَّهُ أَحَدٌ، قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ، قُلْ أَعُوذُ بِرَبِّ النَّاسِ.","3 مرات"]
+];
+const type=new URLSearchParams(location.search).get("type")==="evening"?"evening":"morning";
+const data=type==="evening"?evening:morning;let i=0;
+document.getElementById("title").textContent=type==="evening"?"أذكار المساء":"أذكار الصباح";
+document.getElementById("icon").textContent=type==="evening"?"🌙":"🌅";
+document.getElementById("session").textContent=type==="evening"?"جلسة المساء":"جلسة الصباح";
+function render(){if(i>=data.length){document.getElementById("card").style.display="none";document.getElementById("counter").style.display="none";document.getElementById("progress").style.width="100%";document.getElementById("done").classList.add("show");return}document.getElementById("zikr").textContent=data[i][0];document.getElementById("repeat").textContent="التكرار: "+data[i][1];document.getElementById("counter").textContent="الذكر "+(i+1)+" من "+data.length;document.getElementById("progress").style.width=(i/data.length*100)+"%"}
+document.getElementById("tap").onclick=()=>{i++;render()};render();
+</script>
+</body>
+</html>
