@@ -13,52 +13,39 @@
 .progress-wrap{background:#dfe7e2;border-radius:99px;height:7px;overflow:hidden;margin:18px 0 24px}.progress{height:100%;width:0;background:linear-gradient(90deg,#a77d38,#527d6c);transition:.3s}
 .counter{text-align:center;color:#75827c;font-size:13px;margin-bottom:12px}
 .card{background:rgba(255,255,255,.82);border:1px solid rgba(24,61,50,.12);border-radius:28px;padding:34px 28px;box-shadow:0 20px 55px rgba(36,58,49,.09);text-align:center}
-.zikr{font-family:Amiri,serif;font-size:clamp(26px,4vw,36px);line-height:2;color:#173c31}.repeat{margin:22px 0 8px;color:#7a867f;font-size:14px}
-.counter-label{font-size:13px;color:#7d8983;margin-top:22px}.counter-number{font-size:42px;font-weight:700;color:#183d32;line-height:1.1;margin:5px 0 13px}.counter-number span{font-size:20px;color:#87918c;font-weight:600}
-.mini-progress{height:9px;background:#e1e8e3;border-radius:99px;overflow:hidden;max-width:440px;margin:0 auto 22px}.mini-progress-fill{height:100%;width:100%;background:linear-gradient(90deg,#a77d38,#527d6c);border-radius:99px;transition:width .25s ease}
+.zikr{font-family:Amiri,serif;font-size:clamp(26px,4vw,36px);line-height:2;color:#173c31}.repeat{margin:20px 0 8px;color:#7a867f;font-size:14px}
+.bead-label{font-size:13px;color:#7d8983;margin-top:18px}.bead-count{font-size:42px;font-weight:700;color:#183d32;line-height:1.1;margin:5px 0 15px}.bead-count span{font-size:18px;color:#87918c;font-weight:600}
+.beads{display:flex;justify-content:center;align-items:center;gap:9px;flex-wrap:wrap;max-width:420px;margin:0 auto 24px;min-height:24px}.bead{width:13px;height:13px;border-radius:50%;background:#d7dfda;transition:.2s}.bead.done{background:#a77d38;transform:scale(1.12)}.bead.pop{animation:pop .22s ease}
+@keyframes pop{50%{transform:scale(1.55)}}
 .tap{border:0;border-radius:18px;padding:15px 34px;background:#183d32;color:#fff;font:700 16px Cairo;cursor:pointer;box-shadow:0 8px 20px rgba(24,61,50,.2);transition:.15s}.tap:active{transform:scale(.97)}
 .done{display:none;text-align:center;padding:28px}.done.show{display:block}.done h2{font-family:Amiri;font-size:38px;color:#183d32;margin:8px}.done p{color:#73817a}.restart{display:inline-block;margin-top:8px;color:#a77d38;font-weight:700}
-@media(max-width:650px){.adhkar-page{padding:18px 13px 30px}.top{margin-bottom:15px}.header h1{font-size:39px}.card{padding:27px 19px;border-radius:23px}.zikr{font-size:27px;line-height:1.95}.counter-number{font-size:38px}}
+@media(max-width:650px){.adhkar-page{padding:18px 13px 30px}.top{margin-bottom:15px}.header h1{font-size:39px}.card{padding:27px 19px;border-radius:23px}.zikr{font-size:27px;line-height:1.95}.bead-count{font-size:38px}}
 </style>
 </head>
 <body>
 <main class="adhkar-page"><div class="reader">
 <div class="top"><a class="back" href="index.html">← الرئيسية</a><span id="session"></span></div>
 <div class="header"><div class="icon" id="icon">🌅</div><h1 id="title">أذكار الصباح</h1><p>خذ لحظتك… واقرأ بهدوء.</p></div>
-<div class="progress-wrap"><div class="progress" id="progress"></div></div>
-<div class="counter" id="counter"></div>
+<div class="progress-wrap"><div class="progress" id="progress"></div></div><div class="counter" id="counter"></div>
 <article class="card" id="card">
 <div class="zikr" id="zikr"></div>
 <div class="repeat" id="repeat"></div>
-<div class="counter-label">متبقي</div>
-<div class="counter-number" id="remaining">1 <span>/ 1</span></div>
-<div class="mini-progress"><div class="mini-progress-fill" id="miniProgress"></div></div>
+<div class="bead-label">تقدمك في هذا الذكر</div>
+<div class="bead-count" id="beadCount">3 <span>/ 3</span></div>
+<div class="beads" id="beads"></div>
 <button class="tap" id="tap">اضغط للذكر</button>
 </article>
 <section class="done" id="done"><div style="font-size:48px">🤍</div><h2>أحسنت</h2><p>أتممت أذكارك. تقبّل الله منك، وجعل يومك مليئًا بالسكينة.</p><a class="restart" href="index.html">العودة للرئيسية</a></section>
 </div></main>
 <script>
 const morning=[
-["أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ.",1],
-["اللَّهُمَّ بِكَ أَصْبَحْنَا وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ.",1],
-["رَضِيتُ بِاللَّهِ رَبًّا، وَبِالإِسْلَامِ دِينًا، وَبِمُحَمَّدٍ ﷺ نَبِيًّا.",3],
-["اللَّهُمَّ إِنِّي أَسْأَلُكَ العَفْوَ وَالعَافِيَةَ فِي الدُّنْيَا وَالآخِرَةِ.",1],
-["بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ العَلِيمُ.",3],
-["سُبْحَانَ اللَّهِ وَبِحَمْدِهِ.",100],
-["آيَةُ الْكُرْسِيِّ — ﴿اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ...﴾",1],
-["قُلْ هُوَ اللَّهُ أَحَدٌ، قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ، قُلْ أَعُوذُ بِرَبِّ النَّاسِ.",3]];
+["أَصْبَحْنَا وَأَصْبَحَ الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ.",1],["اللَّهُمَّ بِكَ أَصْبَحْنَا وَبِكَ أَمْسَيْنَا، وَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ النُّشُورُ.",1],["رَضِيتُ بِاللَّهِ رَبًّا، وَبِالإِسْلَامِ دِينًا، وَبِمُحَمَّدٍ ﷺ نَبِيًّا.",3],["اللَّهُمَّ إِنِّي أَسْأَلُكَ العَفْوَ وَالعَافِيَةَ فِي الدُّنْيَا وَالآخِرَةِ.",1],["بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ العَلِيمُ.",3],["سُبْحَانَ اللَّهِ وَبِحَمْدِهِ.",100],["آيَةُ الْكُرْسِيِّ — ﴿اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ...﴾",1],["قُلْ هُوَ اللَّهُ أَحَدٌ، قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ، قُلْ أَعُوذُ بِرَبِّ النَّاسِ.",3]];
 const evening=[
-["أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ.",1],
-["اللَّهُمَّ بِكَ أَمْسَيْنَا وَبِكَ أَصْبَحْنَا، وَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ الْمَصِيرُ.",1],
-["رَضِيتُ بِاللَّهِ رَبًّا، وَبِالإِسْلَامِ دِينًا، وَبِمُحَمَّدٍ ﷺ نَبِيًّا.",3],
-["بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ العَلِيمُ.",3],
-["سُبْحَانَ اللَّهِ وَبِحَمْدِهِ.",100],
-["آيَةُ الْكُرْسِيِّ — ﴿اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ...﴾",1],
-["قُلْ هُوَ اللَّهُ أَحَدٌ، قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ، قُلْ أَعُوذُ بِرَبِّ النَّاسِ.",3]];
+["أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ.",1],["اللَّهُمَّ بِكَ أَمْسَيْنَا وَبِكَ أَصْبَحْنَا، وَبِكَ نَحْيَا وَبِكَ نَمُوتُ وَإِلَيْكَ الْمَصِيرُ.",1],["رَضِيتُ بِاللَّهِ رَبًّا، وَبِالإِسْلَامِ دِينًا، وَبِمُحَمَّدٍ ﷺ نَبِيًّا.",3],["بِسْمِ اللَّهِ الَّذِي لَا يَضُرُّ مَعَ اسْمِهِ شَيْءٌ فِي الأَرْضِ وَلَا فِي السَّمَاءِ وَهُوَ السَّمِيعُ العَلِيمُ.",3],["سُبْحَانَ اللَّهِ وَبِحَمْدِهِ.",100],["آيَةُ الْكُرْسِيِّ — ﴿اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ...﴾",1],["قُلْ هُوَ اللَّهُ أَحَدٌ، قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ، قُلْ أَعُوذُ بِرَبِّ النَّاسِ.",3]];
 const type=new URLSearchParams(location.search).get("type")==="evening"?"evening":"morning";const data=type==="evening"?evening:morning;let i=0,remaining=0,total=0;
 document.getElementById("title").textContent=type==="evening"?"أذكار المساء":"أذكار الصباح";document.getElementById("icon").textContent=type==="evening"?"🌙":"🌅";document.getElementById("session").textContent=type==="evening"?"جلسة المساء":"جلسة الصباح";
-function render(){if(i>=data.length){document.getElementById("card").style.display="none";document.getElementById("counter").style.display="none";document.getElementById("progress").style.width="100%";document.getElementById("done").classList.add("show");return}total=data[i][1];remaining=total;document.getElementById("zikr").textContent=data[i][0];document.getElementById("repeat").textContent="العدد الإجمالي: "+total;document.getElementById("remaining").innerHTML=remaining+" <span>/ "+total+"</span>";document.getElementById("miniProgress").style.width="100%";document.getElementById("counter").textContent="الذكر "+(i+1)+" من "+data.length;document.getElementById("progress").style.width=(i/data.length*100)+"%"}
-document.getElementById("tap").onclick=()=>{if(remaining>0)remaining--;document.getElementById("remaining").innerHTML=remaining+" <span>/ "+total+"</span>";document.getElementById("miniProgress").style.width=(remaining/total*100)+"%";if(remaining===0){i++;setTimeout(render,180)}};render();
+function render(){if(i>=data.length){document.getElementById("card").style.display="none";document.getElementById("counter").style.display="none";document.getElementById("progress").style.width="100%";document.getElementById("done").classList.add("show");return}total=data[i][1];remaining=total;document.getElementById("zikr").textContent=data[i][0];document.getElementById("repeat").textContent="التكرار: "+total+" "+(total===1?"مرة":"مرات");document.getElementById("beadCount").innerHTML=remaining+" <span>/ "+total+"</span>";const beads=document.getElementById("beads");beads.innerHTML="";const visible=Math.min(total,12);for(let n=0;n<visible;n++){const b=document.createElement("span");b.className="bead";b.dataset.index=n;beads.appendChild(b)}if(total>12){const more=document.createElement("span");more.className="bead-label";more.textContent="";beads.appendChild(more)}document.getElementById("counter").textContent="الذكر "+(i+1)+" من "+data.length;document.getElementById("progress").style.width=(i/data.length*100)+"%"}
+document.getElementById("tap").onclick=()=>{if(remaining<=0)return;remaining--;document.getElementById("beadCount").innerHTML=remaining+" <span>/ "+total+"</span>";if(total<=12){const b=document.querySelector('.bead[data-index="'+(total-remaining-1)+'"]');if(b){b.classList.add("done","pop");setTimeout(()=>b.classList.remove("pop"),220)}}if(remaining===0){i++;setTimeout(render,220)}};render();
 </script>
 </body>
 </html>
