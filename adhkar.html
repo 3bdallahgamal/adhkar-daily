@@ -11,7 +11,7 @@
 .reader{width:min(720px,100%);margin:auto;position:relative;z-index:1}
 .top{display:flex;justify-content:space-between;align-items:center;color:#74817a;font-size:12px;margin-bottom:17px;padding:0 3px}.back{color:#9d7939;font-weight:700}.top span{color:#7c8781}
 .header{text-align:center;margin-bottom:8px;position:relative}.header .icon{display:none}.header h1{font-family:Amiri,serif;font-size:40px;line-height:1.1;margin:0;color:#173c31;font-weight:700}.header h1::before{content:"";display:block;width:58px;height:1px;background:rgba(167,125,56,.45);margin:0 auto 7px}.header h1::after{content:"✦";display:block;font-family:serif;font-size:11px;color:#a77d38;margin-top:5px}
-.morning-scene{height:150px;margin:-2px auto 4px;max-width:680px;border-radius:28px;overflow:hidden;background:linear-gradient(180deg,#cfe9e7 0%,#f7dfbd 58%,#fff8e9 100%);position:relative;box-shadow:0 12px 30px rgba(76,103,96,.08);border:1px solid rgba(104,132,120,.12)}.morning-scene::before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;left:50%;top:42px;transform:translateX(-50%);background:radial-gradient(circle,#fffde8 0 34%,rgba(255,214,142,.82) 55%,rgba(255,214,142,0) 72%)}.morning-scene::after{content:"";position:absolute;inset:auto 0 0;height:42px;background:linear-gradient(180deg,rgba(255,255,255,0),rgba(235,228,207,.8))}.morning-scene .scene-svg{position:absolute;inset:0;width:100%;height:100%;z-index:2}.evening .morning-scene{background:linear-gradient(180deg,#193a59 0%,#354967 48%,#b87969 100%);border-color:rgba(255,219,145,.14);box-shadow:0 14px 34px rgba(24,38,55,.18)}.evening .morning-scene::before{width:165px;height:165px;top:38px;background:radial-gradient(circle,#ffd98b 0 3%,rgba(255,206,124,.48) 25%,rgba(255,206,124,0) 68%)}.evening .morning-scene::after{background:linear-gradient(180deg,rgba(17,36,55,0),rgba(15,31,48,.62))}.scene-ground{fill:#d7dfd5;stroke:#687b73;stroke-width:2}.scene-line{fill:none;stroke:#667b72;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}.scene-light{fill:#fff8dc}.scene-dark{fill:#52676b}.scene-palm{fill:none;stroke:#6d7f75;stroke-width:3;stroke-linecap:round}.scene-cloud{fill:rgba(255,255,255,.62)}.scene-star{fill:#ffe3a0}.evening .scene-ground{fill:#586875;stroke:#233b4b}.evening .scene-line{stroke:#263e4d}.evening .scene-light{fill:#ffd88a}.evening .scene-dark{fill:#344958}.evening .scene-palm{stroke:#273f4c}.evening .scene-cloud{fill:rgba(137,158,180,.34)}.progress-wrap{background:rgba(23,60,49,.12);border-radius:99px;height:4px;overflow:hidden;margin:0 8px 5px}.progress{height:100%;width:0;background:#92703a;transition:.35s ease}
+.morning-scene{height:235px;margin:-2px auto 5px;max-width:680px;border-radius:30px;overflow:hidden;position:relative;background:#f7dfbd;box-shadow:0 14px 34px rgba(76,103,96,.10);border:1px solid rgba(104,132,120,.10)}.scene-svg{position:absolute;inset:0;width:100%;height:100%;display:block}.scene-sky{fill:url(#sceneSky)}.scene-sun{fill:url(#sceneSun)}.scene-cloud{fill:rgba(255,255,255,.62)}.scene-stars{display:none;fill:#ffe5a4}.scene-moon{display:none;fill:#ffe09a}.scene-palms{fill:none;stroke:#718079;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.scene-mosque{fill:#d8e2dc;stroke:#667873;stroke-width:3;stroke-linejoin:round}.scene-minaret{fill:#d8e2dc}.scene-window{fill:none;stroke:#6d7d78;stroke-width:4;stroke-linecap:round}.scene-door{fill:#fff6dc;stroke:#667873;stroke-width:3}.scene-ground-line,.scene-ground-2{fill:none;stroke:#c5c9bd;stroke-width:3;stroke-linecap:round}.scene-ground-2{stroke-width:2;opacity:.7}.evening .morning-scene{background:#183957;box-shadow:0 14px 34px rgba(24,38,55,.18);border-color:rgba(255,219,145,.14)}.evening .scene-sky{fill:url(#sceneNight)}.evening .scene-sun{fill:url(#sceneSun);opacity:.7}.evening .scene-stars{display:block}.evening .scene-moon{display:block}.evening .scene-cloud{fill:rgba(128,149,172,.35)}.evening .scene-palms{stroke:#293f4d}.evening .scene-mosque{fill:#586875;stroke:#253c4c}.evening .scene-minaret{fill:#586875}.evening .scene-window{stroke:#d9b76f}.evening .scene-door{fill:#ffd98b;stroke:#293f4d}.evening .scene-ground-line,.evening .scene-ground-2{stroke:#718093}.progress-wrap{background:rgba(23,60,49,.12);border-radius:99px;height:4px;overflow:hidden;margin:0 8px 5px}.progress{height:100%;width:0;background:#92703a;transition:.35s ease}
 .counter{text-align:center;color:#7c8781;font-size:11px;margin-bottom:9px}
 .card{position:relative;background:#f7f1e2;border:2px solid rgba(151,113,48,.42);border-radius:120px 120px 24px 24px;padding:42px 30px 24px;box-shadow:0 18px 45px rgba(60,57,42,.13);text-align:center;overflow:hidden}
 .card::before{content:"";position:absolute;top:14px;left:50%;transform:translateX(-50%);width:72px;height:18px;border-top:1px solid rgba(151,113,48,.55);border-bottom:1px solid rgba(151,113,48,.25);border-radius:50%}
@@ -25,13 +25,43 @@
 
 .done{display:none;text-align:center;padding:30px 20px}.done.show{display:block}.done h2{font-family:Amiri;font-size:38px;color:#173c31;margin:8px}.done p{color:#738079}.restart{display:inline-block;margin-top:8px;color:#967238;font-weight:700}
 @media(prefers-reduced-motion:reduce){.card{transition:none}.card.fade-in,.count-number.is-pressed{animation:none}}
-@media(max-width:650px){.adhkar-page{padding:10px 11px 18px}.top{margin-bottom:11px}.header{margin-bottom:8px}.header h1{font-size:36px}.morning-scene{height:116px;border-radius:22px;margin-bottom:2px}.card{padding:38px 17px 21px;border-radius:90px 90px 20px 20px}.zikr{font-size:25px;line-height:1.85}.count-number{font-size:34px}.count-number{font-size:34px}}
+@media(max-width:650px){.adhkar-page{padding:10px 11px 18px}.top{margin-bottom:11px}.header{margin-bottom:8px}.header h1{font-size:36px}.morning-scene{height:185px;border-radius:22px;margin-bottom:2px}.card{padding:38px 17px 21px;border-radius:90px 90px 20px 20px}.zikr{font-size:25px;line-height:1.85}.count-number{font-size:34px}.count-number{font-size:34px}}
 </style>
 </head>
 <body>
 <main class="adhkar-page"><div class="reader">
 <div class="top"><a class="back" href="index.html">← الرئيسية</a><span id="session"></span></div>
-<div class="header"><div class="icon" id="icon">🌅</div><h1 id="title">أَذْكَارُ الصَّبَاحِ</h1></div><div class="morning-scene" aria-hidden="true"><svg class="scene-svg" viewBox="0 0 900 260" preserveAspectRatio="xMidYMid meet"><g class="scene-cloud"><path d="M65 88c24-27 65-22 83 6 25-10 52 5 55 29H35c2-20 12-29 30-35Z"/><path d="M650 58c20-23 54-20 69 5 23-9 49 5 52 27H620c2-17 11-27 30-32Z"/></g><g class="scene-star"><circle cx="116" cy="54" r="3"/><circle cx="765" cy="58" r="3"/><circle cx="710" cy="96" r="2"/></g><g class="scene-line scene-palm"><path d="M126 235V152M126 170c-24-28-45-32-58-28M126 166c14-31 35-40 55-37M126 190c-27-14-47-12-62-1M126 186c20-19 39-20 58-12M756 235V145M756 166c-22-28-42-30-56-25M756 162c16-30 37-37 57-33M756 190c-23-13-43-11-59-1M756 184c19-18 38-18 57-10"/></g><g class="scene-ground"><path d="M235 235v-78q0-38 38-55 38 17 38 55v78Z"/><path d="M300 235v-93q0-63 150-63t150 63v93Z"/><path d="M555 235v-78q0-38 38-55 38 17 38 55v78Z"/><path d="M190 235v-62h55v62M655 235v-66h55v66"/></g><g class="scene-line"><path d="M330 235v-91q0-50 120-50t120 50v91Z"/><path d="M382 235v-58q0-38 68-38t68 38v58Z"/><path d="M428 235v-35q0-20 22-20t22 20v35Z"/><path d="M235 165h-8V92h8M222 92h34l-17-25ZM663 169h-8V94h8M650 94h34l-17-25Z"/></g><g class="scene-light"><rect x="350" y="154" width="18" height="34" rx="9"/><rect x="532" y="154" width="18" height="34" rx="9"/><rect x="403" y="190" width="16" height="45" rx="3"/><rect x="481" y="190" width="16" height="45" rx="3"/></g><path class="scene-line" d="M110 238Q450 220 790 238"/></svg></div>
+<div class="header"><div class="icon" id="icon">🌅</div><h1 id="title">أَذْكَارُ الصَّبَاحِ</h1></div><div class="morning-scene" aria-hidden="true">
+<svg class="scene-svg" viewBox="0 0 900 330" preserveAspectRatio="xMidYMid meet">
+<defs>
+<radialGradient id="sceneSun"><stop stop-color="#fffde9"/><stop offset=".55" stop-color="#ffd99a" stop-opacity=".75"/><stop offset="1" stop-color="#ffd99a" stop-opacity="0"/></radialGradient>
+<linearGradient id="sceneSky" x2="0" y2="1"><stop stop-color="#cbe8e6"/><stop offset=".65" stop-color="#f7ddbd"/><stop offset="1" stop-color="#fff7e7"/></linearGradient>
+<linearGradient id="sceneNight" x2="0" y2="1"><stop stop-color="#183957"/><stop offset=".62" stop-color="#53617a"/><stop offset="1" stop-color="#b7786b"/></linearGradient>
+</defs>
+<rect class="scene-sky" width="900" height="330" rx="26"/>
+<circle class="scene-sun" cx="450" cy="148" r="125"/>
+<g class="scene-cloud"><path d="M55 145c22-34 70-35 91-2 31-13 68 6 72 39H25c2-18 12-30 30-37Z"/><path d="M690 130c18-28 58-30 77-4 27-11 58 6 61 34H660c2-15 11-24 30-30Z"/></g>
+<g class="scene-stars"><circle cx="110" cy="75" r="2"/><circle cx="165" cy="108" r="3"/><circle cx="745" cy="72" r="2"/><circle cx="800" cy="112" r="3"/><circle cx="690" cy="55" r="2"/></g>
+<g class="scene-moon"><path d="M155 62a43 43 0 1 0 42 57 36 36 0 1 1-42-57Z"/></g>
+<g class="scene-palms">
+<path d="M120 292V195M120 220c-35-35-61-34-78-25M120 218c17-39 45-53 69-47M120 244c-35-18-62-13-82 2M120 239c29-25 55-24 76-12"/>
+<path d="M780 292V185M780 215c-31-34-58-33-76-24M780 212c19-39 47-50 71-43M780 240c-32-18-57-14-77 0M780 235c28-24 53-23 74-11"/>
+</g>
+<g class="scene-mosque">
+<path d="M255 292V208q0-52 44-74 44 22 44 74v84Z"/>
+<path d="M315 292V178q0-86 135-86t135 86v114Z"/>
+<path d="M601 292v-84q0-52 44-74 44 22 44 74v84Z"/>
+<path d="M348 292V170q0-60 102-60t102 60v122Z"/>
+<path d="M389 292v-72q0-43 61-43t61 43v72Z"/>
+<path d="M428 292v-46q0-25 22-25t22 25v46Z"/>
+<path class="scene-minaret" d="M236 292V112h30v180M226 112h50l-25-35Z"/>
+<path class="scene-minaret" d="M634 292V100h30v192M624 100h50l-25-35Z"/>
+<path class="scene-window" d="M370 190v38M420 184v44M480 184v44M530 190v38"/>
+<path class="scene-door" d="M427 292v-46q0-23 23-23t23 23v46Z"/>
+</g>
+<path class="scene-ground-line" d="M55 298Q450 270 845 298"/>
+<path class="scene-ground-2" d="M250 310h400M330 318h240"/>
+</svg></div>
 <div class="progress-wrap"><div class="progress" id="progress"></div></div><div class="counter" id="counter"></div>
 <article class="card" id="card">
 <div class="zikr" id="zikr"></div>
