@@ -17,6 +17,7 @@
 .card::after{content:"✦";position:absolute;top:14px;left:50%;transform:translateX(-50%);color:#a77d38;font-size:12px;background:#f7f1e2;padding:0 7px}
 .zikr{font-family:Amiri,serif;font-size:clamp(24px,3.6vw,34px);line-height:1.85;color:#173c31;max-width:680px;margin:0 auto;text-wrap:balance;overflow-wrap:normal;word-break:normal}.zikr.long{font-size:clamp(21px,3.1vw,29px);line-height:1.8}.zikr.very-long{font-size:clamp(19px,2.8vw,26px);line-height:1.75}
 .count-number{position:relative;border:0;background:#f7f1e2;font:700 34px Cairo;color:#173c31;cursor:pointer;display:flex;align-items:center;justify-content:center;width:92px;height:92px;padding:6px;margin:22px auto 10px;line-height:1;border-radius:50%;box-shadow:0 8px 20px rgba(60,57,42,.09),inset 0 0 0 1px rgba(151,113,48,.3);transition:transform .12s ease,box-shadow .12s ease}.count-number::before{content:"";position:absolute;inset:-7px;border-radius:50%;background:conic-gradient(#a77d38 var(--progress,0%),#dfe3d9 0);-webkit-mask:radial-gradient(farthest-side,transparent calc(100% - 4px),#000 calc(100% - 3px));mask:radial-gradient(farthest-side,transparent calc(100% - 4px),#000 calc(100% - 3px));transition:background .2s ease}.count-number:active,.count-number.is-pressed{transform:scale(.94);outline:none;-webkit-tap-highlight-color:transparent}.count-number:focus{outline:none}.count-number span{font-size:15px;color:#89918d;font-weight:600}.count-number .counter-value{font-size:34px;color:#173c31;font-weight:700}
+.fadhl{margin:18px auto 0;padding-top:13px;border-top:1px solid rgba(151,113,48,.18);max-width:620px}.fadhl-title{font-size:12px;color:#967238;font-weight:700;margin-bottom:4px}.fadhl-text{font-size:11px;line-height:1.8;color:#7a857f}
 .done{display:none;text-align:center;padding:30px 20px}.done.show{display:block}.done h2{font-family:Amiri;font-size:38px;color:#173c31;margin:8px}.done p{color:#738079}.restart{display:inline-block;margin-top:8px;color:#967238;font-weight:700}
 .card.fade-out{opacity:0;transform:translateY(8px)}.card.fade-in{animation:cardIn .3s ease}@keyframes cardIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){.card.fade-in,.count-number.is-pressed{animation:none}}
@@ -36,6 +37,7 @@
 <article class="card" id="card">
 <div class="zikr" id="zikr"></div>
 <button class="count-number" id="countNumber" type="button" aria-label="تسجيل الذكر"><span class="counter-value">0</span> <span>/ 1</span></button>
+<div class="fadhl" id="fadhl"><div class="fadhl-title">فضل الذكر</div><div class="fadhl-text" id="fadhlText"></div></div>
 </article>
 <section class="done" id="done"><div style="font-size:48px">🤍</div><h2>أحسنت</h2><p>أتممت الرقية. تقبّل الله منك وجعلها سببًا للسكينة والعافية.</p><a class="restart" href="index.html">العودة للرئيسية</a></section>
 </div>
@@ -52,8 +54,19 @@ const data=[
 ["أَسْأَلُ اللَّهَ الْعَظِيمَ رَبَّ الْعَرْشِ الْعَظِيمِ أَنْ يَشْفِيَنِي.",7]
 ];
 let i=0,completed=0,total=0;
-const zikr=document.getElementById("zikr"),countNumber=document.getElementById("countNumber"),counter=document.getElementById("counter"),progress=document.getElementById("progress"),card=document.getElementById("card"),done=document.getElementById("done"),prevBtn=document.getElementById("prevBtn"),nextBtn=document.getElementById("nextBtn");
-function updateCard(){total=data[i][1];completed=0;zikr.textContent=data[i][0];zikr.classList.remove("long","very-long");if(data[i][0].length>150)zikr.classList.add("very-long");else if(data[i][0].length>95)zikr.classList.add("long");countNumber.innerHTML='<span class="counter-value">0</span> <span>/ '+total+'</span>';countNumber.style.setProperty("--progress","0%");counter.textContent="الذكر "+(i+1)+" من "+data.length;progress.style.width=(data.length<=1?100:(i/(data.length-1))*100)+"%";prevBtn.disabled=i===0;nextBtn.disabled=i===data.length-1}
+const zikr=document.getElementById("zikr"),countNumber=document.getElementById("countNumber"),counter=document.getElementById("counter"),progress=document.getElementById("progress"),card=document.getElementById("card"),done=document.getElementById("done"),prevBtn=document.getElementById("prevBtn"),nextBtn=document.getElementById("nextBtn"),fadhlText=document.getElementById("fadhlText");
+const fadhl=[
+"رقية ثابتة عن النبي ﷺ، وردت عن جبريل عليه السلام، وفيها سؤال الله الشفاء من كل ما يؤذي ومن شر النفس أو عين الحاسد. citeturn0search0turn0search4",
+"ورد أن النبي ﷺ قرأ هذه الرقية للمريض ثلاث مرات، وفيها طلب الشفاء بالله والاستعاذة من شر النفاثات في العقد والحاسد إذا حسد. citeturn0search6",
+"ذكر من ألفاظ الرقية، ومعناه إسناد الشفاء إلى الله والاستعاذة به من أذى الحسد والعين.",
+"ورد في الحديث أن النبي ﷺ أمر بقول «باسم الله» ثلاث مرات عند موضع الألم، ثم الدعاء سبع مرات بالاستعاذة بالله وقدرته من شر ما يجد ويحاذر. citeturn0search5",
+"هذا الدعاء وارد في حديث صحيح عن عثمان بن أبي العاص رضي الله عنه، وفيه توجيه نبوي للرقية عند وجود الألم. citeturn0search5",
+"من الرقى النبوية التي كان النبي ﷺ يرقي بها، وفيها سؤال الله الشفاء لأنه وحده الشافي. citeturn0search10",
+"دعاء للتحصين من الشيطان والهوام والعين، وهو من ألفاظ الرقية والاستعاذة بالله.",
+"استعاذة بالله بكلماته التامات من شر ما خلق، وهي من ألفاظ التحصين.",
+"دعاء بطلب الشفاء من الله، وهو من الأدعية الواردة في باب الرقية والدعاء للمريض. citeturn0search1"
+];
+function updateCard(){total=data[i][1];completed=0;zikr.textContent=data[i][0];zikr.classList.remove("long","very-long");if(data[i][0].length>150)zikr.classList.add("very-long");else if(data[i][0].length>95)zikr.classList.add("long");countNumber.innerHTML='<span class="counter-value">0</span> <span>/ '+total+'</span>';countNumber.style.setProperty("--progress","0%");counter.textContent="الذكر "+(i+1)+" من "+data.length;fadhlText.textContent=fadhl[i]||"من أدعية الرقية والاستعاذة بالله.";progress.style.width=(data.length<=1?100:(i/(data.length-1))*100)+"%";prevBtn.disabled=i===0;nextBtn.disabled=i===data.length-1}
 function render(){if(i>=data.length){card.style.display="none";document.querySelector(".nav").style.display="none";done.classList.add("show");return}card.style.display="block";document.querySelector(".nav").style.display="flex";done.classList.remove("show");updateCard();card.classList.remove("fade-in");void card.offsetWidth;card.classList.add("fade-in")}
 prevBtn.onclick=()=>{if(i<=0)return;i--;render()};
 nextBtn.onclick=()=>{if(i>=data.length-1)return;i++;render()};
