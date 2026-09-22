@@ -57,14 +57,13 @@ let i=0,completed=0,total=0;
 const zikr=document.getElementById("zikr"),countNumber=document.getElementById("countNumber"),counter=document.getElementById("counter"),progress=document.getElementById("progress"),card=document.getElementById("card"),done=document.getElementById("done"),prevBtn=document.getElementById("prevBtn"),nextBtn=document.getElementById("nextBtn"),fadhlText=document.getElementById("fadhlText");
 const fadhl=[
 "رقية ثابتة عن النبي ﷺ، وردت عن جبريل عليه السلام، وفيها سؤال الله الشفاء والاستعاذة من كل ما يؤذي ومن شر النفس أو عين الحاسد.",
-"ورد أن النبي ﷺ قرأ هذه الرقية للمريض ثلاث مرات، وفيها سؤال الله الشفاء والاستعاذة من شر النفاثات في العقد والحاسد إذا حسد.",
+"ذكر للتحصين، ورد فيه أن من قاله ثلاث مرات صباحًا ومساءً لم يضره شيء بإذن الله.",
 "من ألفاظ الرقية، وفيه إسناد الشفاء إلى الله والاستعاذة به من أذى الحسد والعين.",
 "ورد في الحديث أن النبي ﷺ أمر بقول «باسم الله» ثلاث مرات، ثم قول «أعوذ بالله وقدرته من شر ما أجد وأحاذر» سبع مرات عند وجود الألم.",
-"ورد هذا الدعاء في حديث صحيح عن عثمان بن أبي العاص رضي الله عنه، وفيه توجيه نبوي للرقية عند وجود الألم.";
-"من الرقى النبوية التي كان النبي ﷺ يرقي بها، وفيها سؤال الله الشفاء لأنه وحده الشافي.",
+"دعاء نبوي في طلب الشفاء، وفيه سؤال الله وحده أن يذهب البأس وأن يمنح الشفاء الكامل.",
 "دعاء للتحصين من الشيطان والهوام والعين، وهو من ألفاظ الرقية والاستعاذة بالله.",
 "استعاذة بالله بكلماته التامات من شر ما خلق، وهي من ألفاظ التحصين.",
-"دعاء بطلب الشفاء من الله، وهو من الأدعية الواردة في باب الرقية والدعاء للمريض."
+"دعاء بطلب الشفاء من الله، وفيه سؤال الله العظيم رب العرش العظيم أن يشفي المريض."
 ];
 function updateCard(){total=data[i][1];completed=0;zikr.textContent=data[i][0];zikr.classList.remove("long","very-long");if(data[i][0].length>150)zikr.classList.add("very-long");else if(data[i][0].length>95)zikr.classList.add("long");countNumber.innerHTML='<span class="counter-value">0</span> <span>/ '+total+'</span>';countNumber.style.setProperty("--progress","0%");counter.textContent="الذكر "+(i+1)+" من "+data.length;fadhlText.textContent=fadhl[i]||"من أدعية الرقية والاستعاذة بالله.";progress.style.width=(data.length<=1?100:(i/(data.length-1))*100)+"%";prevBtn.disabled=i===0;nextBtn.disabled=i===data.length-1}
 function render(){if(i>=data.length){card.style.display="none";document.querySelector(".nav").style.display="none";done.classList.add("show");return}card.style.display="block";document.querySelector(".nav").style.display="flex";done.classList.remove("show");updateCard();card.classList.remove("fade-in");void card.offsetWidth;card.classList.add("fade-in")}
