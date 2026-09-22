@@ -15,7 +15,8 @@
 .card{position:relative;background:#f7f1e2;border:2px solid rgba(151,113,48,.42);border-radius:120px 120px 24px 24px;padding:42px 30px 24px;box-shadow:0 18px 45px rgba(60,57,42,.13);text-align:center;overflow:hidden;height:calc(100svh - 305px);min-height:560px;display:grid;grid-template-rows:minmax(0,1fr) auto auto;align-items:center}
 .card .zikr{grid-row:1;width:100%;height:auto;min-height:0;display:flex;align-items:center;justify-content:center;overflow:auto;padding:8px 0 4px}
 .card .fadhl{grid-row:2;flex:none;width:100%;order:unset;margin:12px auto 0;padding-top:13px;border-top:1px solid rgba(151,113,48,.18)}
-.card .count-number{grid-row:3;flex:none;order:unset;margin:10px auto 16px}
+.counter-area{grid-row:3;width:100%;border-top:1px solid rgba(151,113,48,.18);padding-top:10px;padding-bottom:4px;display:flex;justify-content:center;align-items:center}
+.counter-area .count-number{flex:none;order:unset;margin:0}
 .card::before{content:"";position:absolute;top:14px;left:50%;transform:translateX(-50%);width:72px;height:18px;border-top:1px solid rgba(151,113,48,.55);border-bottom:1px solid rgba(151,113,48,.25);border-radius:50%}
 .card::after{content:"✦";position:absolute;top:14px;left:50%;transform:translateX(-50%);color:#a77d38;font-size:12px;background:#f7f1e2;padding:0 7px}
 .card.fade-out{opacity:0;transform:translateY(8px)}.card.fade-in{animation:cardIn .3s ease}
@@ -45,7 +46,7 @@
 <article class="card" id="card">
 <div class="zikr" id="zikr"></div>
 <div class="fadhl" id="fadhl"><div class="fadhl-title">فضل الذكر</div><div class="fadhl-text" id="fadhlText"></div></div>
-<button class="count-number" id="countNumber" type="button" aria-label="تسجيل الذكر"><span class="counter-value">0</span> <span>/ 3</span></button>
+<div class="counter-area"><button class="count-number" id="countNumber" type="button" aria-label="تسجيل الذكر"><span class="counter-value">0</span> <span>/ 3</span></button></div>
 </article>
 <section class="done" id="done"><div style="font-size:48px">🤍</div><h2>أحسنت</h2><p>أتممت أذكارك. تقبّل الله منك، وجعل يومك مليئًا بالسكينة.</p><a class="restart" href="index.html">العودة للرئيسية</a></section>
 </div></main>
