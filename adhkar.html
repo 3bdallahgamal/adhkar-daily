@@ -17,11 +17,11 @@
 .zikr{font-family:Amiri,serif;font-size:clamp(26px,4vw,36px);line-height:2;color:#173c31}
 .progress-label{font-size:13px;color:#7d8983;margin-top:24px}.count-number{font-size:42px;font-weight:700;color:#183d32;line-height:1.1;margin:6px 0 14px;transition:transform .12s ease}.count-number span{font-size:19px;color:#87918c;font-weight:600}
 .zikr-progress{height:10px;background:#e1e8e3;border-radius:99px;overflow:hidden;max-width:440px;margin:0 auto 24px}.zikr-progress-fill{height:100%;width:0;background:linear-gradient(90deg,#a77d38,#527d6c);border-radius:99px;transition:width .2s ease}
-.tap{position:relative;overflow:hidden;border:0;border-radius:18px;padding:15px 34px;background:#183d32;color:#fff;font:700 16px Cairo;cursor:pointer;box-shadow:0 8px 20px rgba(24,61,50,.2);transition:transform .08s ease,box-shadow .08s ease}.tap:active,.tap.is-pressed{transform:translateY(3px);box-shadow:0 3px 9px rgba(24,61,50,.18),inset 0 2px 5px rgba(0,0,0,.16)}
-.tap.is-pressed::after{content:"";position:absolute;width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.22);left:50%;top:50%;transform:translate(-50%,-50%);animation:pressRipple .32s ease-out forwards;pointer-events:none}
-@keyframes pressRipple{from{width:12px;height:12px;opacity:.45}to{width:150px;height:150px;opacity:0}}
+.tap{border:0;border-radius:18px;padding:15px 34px;background:#183d32;color:#fff;font:700 16px Cairo;cursor:pointer;box-shadow:0 8px 0 #102f27,0 14px 24px rgba(24,61,50,.16);transition:transform .1s ease,box-shadow .1s ease}.tap:active,.tap.is-pressed{transform:translateY(7px);box-shadow:0 1px 0 #102f27,0 5px 10px rgba(24,61,50,.12)}
+.tap.is-pressed{animation:buttonPress .18s ease-out}
+@keyframes buttonPress{0%{transform:translateY(0) scale(1)}45%{transform:translateY(7px) scale(.98)}100%{transform:translateY(0) scale(1)}}
 .done{display:none;text-align:center;padding:28px}.done.show{display:block}.done h2{font-family:Amiri;font-size:38px;color:#183d32;margin:8px}.done p{color:#73817a}.restart{display:inline-block;margin-top:8px;color:#a77d38;font-weight:700}
-@media(prefers-reduced-motion:reduce){.card{transition:none}.card.fade-in,.tap.is-pressed::after{animation:none}}
+@media(prefers-reduced-motion:reduce){.card{transition:none}.card.fade-in,.tap.is-pressed{animation:none}}
 @media(max-width:650px){.adhkar-page{padding:18px 13px 30px}.top{margin-bottom:15px}.header h1{font-size:39px}.card{padding:27px 19px;border-radius:23px}.zikr{font-size:27px;line-height:1.95}.count-number{font-size:38px}}
 </style>
 </head>
@@ -49,7 +49,7 @@ document.getElementById("title").textContent=type==="evening"?"أذكار الم
 function updateCard(){total=data[i][1];completed=0;document.getElementById("zikr").textContent=data[i][0];document.getElementById("countNumber").innerHTML=completed+" <span>/ "+total+"</span>";document.getElementById("zikrProgress").style.width="0%";document.getElementById("counter").textContent="الذكر "+(i+1)+" من "+data.length;document.getElementById("progress").style.width=(i/data.length*100)+"%"}
 function render(){if(i>=data.length){document.getElementById("card").style.display="none";document.getElementById("counter").style.display="none";document.getElementById("progress").style.width="100%";document.getElementById("done").classList.add("show");return}updateCard();const card=document.getElementById("card");card.classList.remove("fade-in");void card.offsetWidth;card.classList.add("fade-in")}
 const tap=document.getElementById("tap"),countNumber=document.getElementById("countNumber"),zikrProgress=document.getElementById("zikrProgress");
-tap.onclick=()=>{if(completed>=total)return;completed++;countNumber.innerHTML=completed+" <span>/ "+total+"</span>";zikrProgress.style.width=(completed/total*100)+"%";tap.classList.remove("is-pressed");void tap.offsetWidth;tap.classList.add("is-pressed");setTimeout(()=>tap.classList.remove("is-pressed"),160);if(completed===total){i++;tap.classList.remove("is-pressed");document.getElementById("card").classList.add("fade-out");setTimeout(()=>{document.getElementById("card").classList.remove("fade-out");render()},220)}};render();
+tap.onclick=()=>{if(completed>=total)return;completed++;countNumber.innerHTML=completed+" <span>/ "+total+"</span>";zikrProgress.style.width=(completed/total*100)+"%";tap.classList.remove("is-pressed");void tap.offsetWidth;tap.classList.add("is-pressed");setTimeout(()=>tap.classList.remove("is-pressed"),180);if(completed===total){i++;tap.classList.remove("is-pressed");document.getElementById("card").classList.add("fade-out");setTimeout(()=>{document.getElementById("card").classList.remove("fade-out");render()},220)}};render();
 </script>
 </body>
 </html>
