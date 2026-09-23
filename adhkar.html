@@ -137,6 +137,20 @@
   .adhkar-page:has(.reader.theme-morning) .header .icon.icon-morning::after{font-size:23px}
 }
 </style>
+<style id="morning-icon-fix-v3">
+/* Remove the added morning icon and move the title upward */
+.adhkar-page:has(.reader.theme-morning) .header .icon.icon-morning{
+  display:none!important;
+}
+.adhkar-page:has(.reader.theme-morning) .header{
+  min-height:0!important;
+  margin-bottom:7px!important;
+}
+.adhkar-page:has(.reader.theme-morning) .header h1{
+  margin-top:0!important;
+  transform:translateY(-9px);
+}
+</style>
 </head>
 <body><button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الليلي" type="button" onclick="document.body.classList.toggle('dark');localStorage.setItem('adhkar-theme',document.body.classList.contains('dark')?'dark':'light');this.textContent=document.body.classList.contains('dark')?'☀':'☾'">☾</button>
 <main class="adhkar-page"><div class="reader theme-morning">
