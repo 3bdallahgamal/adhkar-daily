@@ -32,7 +32,7 @@
 @media(max-width:650px){.adhkar-page{padding:10px 11px 18px}.top{margin-bottom:11px}.header{margin-bottom:8px}.header h1{font-size:36px}.card{padding:38px 17px 21px;border-radius:90px 90px 20px 20px;height:calc(100svh - 265px);min-height:500px}.card .zikr{top:105px;left:17px;right:17px;height:calc(100% - 220px)}.counter-area{left:17px;right:17px;bottom:42px;height:78px}.zikr{font-size:25px;line-height:1.85}.count-number{font-size:34px}.adhkar-nav{margin-bottom:7px;padding:3px 5px}.nav-arrow{width:28px;height:28px;font-size:22px}}
 </style>
 </head>
-<body>
+<body><button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الليلي">☾</button>
 <main class="adhkar-page"><div class="reader">
 <div class="top"><a class="back" href="index.html">← الرئيسية</a><span id="session"></span></div>
 <div class="header"><div class="icon" id="icon">🌅</div><h1 id="title">أذكار الصباح</h1><div class="mosque-icon" aria-hidden="true">🕌</div></div>
@@ -130,5 +130,5 @@ swipeTarget.addEventListener("touchend",e=>{const t=e.changedTouches[0];const dx
 const tap=document.getElementById("countNumber"),countNumber=document.getElementById("countNumber");const prevBtn=document.getElementById("prevBtn"),nextBtn=document.getElementById("nextBtn");prevBtn.onclick=()=>{if(i<=0)return;i--;completed=0;saveProgress();render()};nextBtn.onclick=()=>{if(i>=data.length-1)return;i++;completed=0;saveProgress();render()};
 tap.onclick=()=>{if(completed>=total)return;completed++;saveProgress();countNumber.innerHTML='<span class="counter-value">'+completed+'</span> <span>/ '+total+'</span>';countNumber.style.setProperty("--progress",(completed/total*100)+"%");updateOverallProgress();tap.classList.remove("is-pressed");void tap.offsetWidth;tap.classList.add("is-pressed");setTimeout(()=>tap.classList.remove("is-pressed"),180);if(completed===total){i++;completed=0;saveProgress();tap.classList.remove("is-pressed");document.getElementById("card").classList.add("fade-out");setTimeout(()=>{document.getElementById("card").classList.remove("fade-out");render()},220)}};render();
 </script>
-</body>
+<script>const theme=localStorage.getItem("adhkar-theme");if(theme==="dark")document.body.classList.add("dark");const themeToggle=document.getElementById("themeToggle");themeToggle.textContent=document.body.classList.contains("dark")?"☀":"☾";themeToggle.onclick=()=>{document.body.classList.toggle("dark");const dark=document.body.classList.contains("dark");localStorage.setItem("adhkar-theme",dark?"dark":"light");themeToggle.textContent=dark?"☀":"☾"};</script></body>
 </html>
