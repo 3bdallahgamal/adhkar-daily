@@ -85,6 +85,58 @@
   .adhkar-page:has(.reader.theme-morning) .card{border-radius:66px 66px 20px 20px}
 }
 </style>
+<style id="morning-icon-fix-v2">
+/* Restore a visible morning icon and pull the title back up */
+.adhkar-page:has(.reader.theme-morning) .header{
+  margin-bottom:9px!important;
+}
+.adhkar-page:has(.reader.theme-morning) .header .icon.icon-morning{
+  width:56px!important;
+  height:56px!important;
+  margin:0 auto 3px!important;
+  border-radius:18px;
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 50% 47%,#f7d98a 0 11px,transparent 12px),
+    linear-gradient(180deg,#fff4d5 0%,#f4e5bf 100%)!important;
+  box-shadow:0 8px 20px rgba(105,83,42,.12),0 0 0 1px rgba(167,125,56,.14);
+}
+.adhkar-page:has(.reader.theme-morning) .header .icon.icon-morning::before{
+  content:"";
+  position:absolute;
+  left:10px;
+  right:10px;
+  bottom:11px;
+  height:2px;
+  border-radius:99px;
+  background:linear-gradient(90deg,transparent,#a77d38 18%,#a77d38 82%,transparent);
+  opacity:.7;
+}
+.adhkar-page:has(.reader.theme-morning) .header .icon.icon-morning::after{
+  content:"☀";
+  position:absolute;
+  inset:0;
+  display:grid;
+  place-items:center;
+  padding-bottom:1px;
+  font-size:25px;
+  line-height:1;
+  color:#b7832d;
+  text-shadow:0 2px 7px rgba(167,125,56,.16);
+}
+.adhkar-page:has(.reader.theme-morning) .header h1{
+  margin-top:0!important;
+}
+@media(max-width:650px){
+  .adhkar-page:has(.reader.theme-morning) .header .icon.icon-morning{
+    width:52px!important;
+    height:52px!important;
+    border-radius:16px;
+  }
+  .adhkar-page:has(.reader.theme-morning) .header .icon.icon-morning::after{font-size:23px}
+}
+</style>
 </head>
 <body><button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الليلي" type="button" onclick="document.body.classList.toggle('dark');localStorage.setItem('adhkar-theme',document.body.classList.contains('dark')?'dark':'light');this.textContent=document.body.classList.contains('dark')?'☀':'☾'">☾</button>
 <main class="adhkar-page"><div class="reader theme-morning">
