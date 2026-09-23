@@ -13,12 +13,12 @@
   "orientation": "portrait-primary",
   "categories": ["lifestyle", "books", "education"],
   "icons": [
-    {"src":"https://3bdallahgamal.github.io/adhkar-daily/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
-    {"src":"https://3bdallahgamal.github.io/adhkar-daily/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"}
+    {"src":"https://raw.githubusercontent.com/3bdallahgamal/adhkar-daily/main/icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},
+    {"src":"https://raw.githubusercontent.com/3bdallahgamal/adhkar-daily/main/icon-512.png","sizes":"512x512","type":"image/png","purpose":"any"}
   ],
   "shortcuts": [
-    {"name":"أذكار الصباح","short_name":"الصباح","url":"./adhkar.html?type=morning","icons":[{"src":"https://3bdallahgamal.github.io/adhkar-daily/icon-192.png","sizes":"192x192","type":"image/png"}]},
-    {"name":"أذكار المساء","short_name":"المساء","url":"./adhkar.html?type=evening","icons":[{"src":"https://3bdallahgamal.github.io/adhkar-daily/icon-192.png","sizes":"192x192","type":"image/png"}]},
-    {"name":"المسبحة الإلكترونية","short_name":"المسبحة","url":"./tasbeeh.html","icons":[{"src":"https://3bdallahgamal.github.io/adhkar-daily/icon-192.png","sizes":"192x192","type":"image/png"}]}
+    {"name":"أذكار الصباح","short_name":"الصباح","url":"./adhkar.html?type=morning","icons":[{"src":"https://raw.githubusercontent.com/3bdallahgamal/adhkar-daily/main/icon-192.png","sizes":"192x192","type":"image/png"}]},
+    {"name":"أذكار المساء","short_name":"المساء","url":"./adhkar.html?type=evening","icons":[{"src":"https://raw.githubusercontent.com/3bdallahgamal/adhkar-daily/main/icon-192.png","sizes":"192x192","type":"image/png"}]},
+    {"name":"المسبحة الإلكترونية","short_name":"المسبحة","url":"./tasbeeh.html","icons":[{"src":"https://raw.githubusercontent.com/3bdallahgamal/adhkar-daily/main/icon-192.png","sizes":"192x192","type":"image/png"}]}
   ]
 }
