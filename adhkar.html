@@ -179,7 +179,27 @@
   }
 }
 </style>
-</head>
+<style id="adhkar-islamic-font-v1">
+@import url('https://fonts.googleapis.com/css2?family=Amiri+Quran&display=swap');
+.theme-morning .zikr,.theme-evening .zikr{
+  font-family:'Amiri Quran','Amiri',serif!important;
+  font-size:31px!important;
+  line-height:2.15!important;
+  font-weight:400!important;
+  font-feature-settings:"liga" 1,"calt" 1!important;
+  text-rendering:optimizeLegibility!important;
+  color:#173c31!important;
+}
+.theme-morning .zikr *,.theme-evening .zikr *{
+  font-family:'Amiri Quran','Amiri',serif!important;
+}
+@media(max-width:650px){
+ .theme-morning .zikr,.theme-evening .zikr{
+   font-size:27px!important;
+   line-height:2.05!important;
+ }
+}
+</style></head>
 <body><button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الليلي" type="button" onclick="document.body.classList.toggle('dark');localStorage.setItem('adhkar-theme',document.body.classList.contains('dark')?'dark':'light');this.textContent=document.body.classList.contains('dark')?'☀':'☾'">☾</button>
 <main class="adhkar-page"><div class="reader theme-morning">
 <div class="top"><a class="back" href="index.html">← الرئيسية</a><span id="session"></span></div>
