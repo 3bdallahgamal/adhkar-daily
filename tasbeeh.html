@@ -109,41 +109,21 @@
  .tap-circle{width:120px!important;height:120px!important;border-width:7px!important;font-size:17px!important;margin:9px auto 5px!important}
 }
 </style>
-
-<style id="tasbeeh-ornament-v1">
-/* New mihrab ornament: layered Islamic arch motif */
-.tasbeeh-card::before{
-  content:""!important;
-  position:absolute!important;
-  top:13px!important;
-  left:50%!important;
-  transform:translateX(-50%)!important;
-  width:92px!important;
-  height:34px!important;
-  border:1px solid rgba(151,113,48,.48)!important;
-  border-bottom:0!important;
-  border-radius:52px 52px 0 0!important;
-  background:
-    linear-gradient(90deg,transparent 0 17%,rgba(151,113,48,.12) 18% 19%,transparent 20% 80%,rgba(151,113,48,.12) 81% 82%,transparent 83%),
-    #f7f1e2!important;
-  z-index:1!important;
+<style id="tasbeeh-islamic-ornament-v2">
+.tasbeeh-card{overflow:visible!important}
+.mihrab-ornament{
+ position:absolute;top:10px;left:50%;transform:translateX(-50%);
+ width:190px;height:62px;color:#a77d38;z-index:4;pointer-events:none;
 }
-.tasbeeh-card::after{
-  content:"◆  ◇  ◆"!important;
-  position:absolute!important;
-  top:8px!important;
-  left:50%!important;
-  transform:translateX(-50%)!important;
-  color:#a77d38!important;
-  font-size:10px!important;
-  letter-spacing:3px!important;
-  background:#f7f1e2!important;
-  padding:0 9px!important;
-  line-height:16px!important;
-  z-index:2!important;
+.mihrab-ornament svg{width:100%;height:100%;display:block}
+.tasbeeh-card::before{content:""!important;top:10px!important;width:76px!important;height:24px!important;border-top:1px solid rgba(151,113,48,.24)!important;border-bottom:0!important;background:none!important;z-index:1!important}
+.tasbeeh-card::after{content:""!important;top:18px!important;width:9px!important;height:9px!important;border:1px solid rgba(167,125,56,.65)!important;background:#f7f1e2!important;transform:translateX(-50%) rotate(45deg)!important;padding:0!important;z-index:2!important}
+.mihrab-ornament + .tasbeeh-card{padding-top:48px!important}
+@media(max-width:650px){
+ .mihrab-ornament{width:168px;height:55px;top:8px}
+ .mihrab-ornament + .tasbeeh-card{padding-top:44px!important}
 }
-</style>
-</head>
+</style></head>
 <body><button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الليلي" type="button" onclick="document.body.classList.toggle('dark');localStorage.setItem('adhkar-theme',document.body.classList.contains('dark')?'dark':'light');this.textContent=document.body.classList.contains('dark')?'☀':'☾'">☾</button>
 <main class="tasbeeh-page">
 <section class="tasbeeh-wrap">
@@ -153,7 +133,23 @@
 <h1>المسبحة الإلكترونية</h1>
 <p>سبّح واذكر الله في أي وقت.</p>
 </div>
-<div class="tasbeeh-card">
+<div class="mihrab-ornament" aria-hidden="true">
+<svg viewBox="0 0 220 72" xmlns="http://www.w3.org/2000/svg">
+ <g fill="none" stroke="currentColor" stroke-width="1.2">
+  <path d="M8 58 Q28 20 52 58 M168 58 Q192 20 212 58"/>
+  <path d="M24 58 Q40 35 56 58 M164 58 Q180 35 196 58"/>
+  <path d="M67 58 Q78 39 88 58 M132 58 Q142 39 153 58"/>
+  <path d="M72 28 L84 16 L96 28 L84 40 Z M124 28 L136 16 L148 28 L136 40 Z"/>
+  <path d="M99 58 L99 35 L110 24 L121 35 L121 58"/>
+  <path d="M104 35 L110 29 L116 35 L110 41 Z"/>
+ </g>
+ <g fill="currentColor">
+  <path d="M84 10l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/>
+  <path d="M136 10l3 7 7 3-7 3-3 7-3-7-7-3 7-3z"/>
+  <circle cx="110" cy="19" r="2.4"/>
+ </g>
+</svg>
+</div><div class="tasbeeh-card">
 <div class="dhikr-list" id="dhikrList"></div>
 <div class="zikr-name" id="zikrName">سُبْحَانَ اللَّهِ وَبِحَمْدِهِ</div>
 <div class="count" id="count">0</div>
