@@ -151,6 +151,34 @@
   transform:translateY(-9px);
 }
 </style>
+<style id="morning-match-evening-v1">
+/* Keep morning content geometry identical to evening */
+.adhkar-page:has(.reader.theme-morning) .header{
+  margin-bottom:10px!important;
+  min-height:88px!important;
+}
+.adhkar-page:has(.reader.theme-morning) .header h1{
+  font-size:40px!important;
+  line-height:1.05!important;
+  transform:none!important;
+  margin:0!important;
+}
+.adhkar-page:has(.reader.theme-morning) .card{
+  border-radius:120px 120px 24px 24px!important;
+}
+@media(max-width:650px){
+  .adhkar-page:has(.reader.theme-morning) .header{
+    margin-bottom:8px!important;
+    min-height:88px!important;
+  }
+  .adhkar-page:has(.reader.theme-morning) .header h1{
+    font-size:36px!important;
+  }
+  .adhkar-page:has(.reader.theme-morning) .card{
+    border-radius:90px 90px 20px 20px!important;
+  }
+}
+</style>
 </head>
 <body><button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الليلي" type="button" onclick="document.body.classList.toggle('dark');localStorage.setItem('adhkar-theme',document.body.classList.contains('dark')?'dark':'light');this.textContent=document.body.classList.contains('dark')?'☀':'☾'">☾</button>
 <main class="adhkar-page"><div class="reader theme-morning">
