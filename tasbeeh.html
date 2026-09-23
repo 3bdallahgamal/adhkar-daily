@@ -109,6 +109,40 @@
  .tap-circle{width:120px!important;height:120px!important;border-width:7px!important;font-size:17px!important;margin:9px auto 5px!important}
 }
 </style>
+
+<style id="tasbeeh-ornament-v1">
+/* New mihrab ornament: layered Islamic arch motif */
+.tasbeeh-card::before{
+  content:""!important;
+  position:absolute!important;
+  top:13px!important;
+  left:50%!important;
+  transform:translateX(-50%)!important;
+  width:92px!important;
+  height:34px!important;
+  border:1px solid rgba(151,113,48,.48)!important;
+  border-bottom:0!important;
+  border-radius:52px 52px 0 0!important;
+  background:
+    linear-gradient(90deg,transparent 0 17%,rgba(151,113,48,.12) 18% 19%,transparent 20% 80%,rgba(151,113,48,.12) 81% 82%,transparent 83%),
+    #f7f1e2!important;
+  z-index:1!important;
+}
+.tasbeeh-card::after{
+  content:"◆  ◇  ◆"!important;
+  position:absolute!important;
+  top:8px!important;
+  left:50%!important;
+  transform:translateX(-50%)!important;
+  color:#a77d38!important;
+  font-size:10px!important;
+  letter-spacing:3px!important;
+  background:#f7f1e2!important;
+  padding:0 9px!important;
+  line-height:16px!important;
+  z-index:2!important;
+}
+</style>
 </head>
 <body><button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الليلي" type="button" onclick="document.body.classList.toggle('dark');localStorage.setItem('adhkar-theme',document.body.classList.contains('dark')?'dark':'light');this.textContent=document.body.classList.contains('dark')?'☀':'☾'">☾</button>
 <main class="tasbeeh-page">
