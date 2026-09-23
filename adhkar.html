@@ -18,16 +18,15 @@
 .counter-area .count-number{flex:none;order:unset;margin:0}
 @media(max-width:650px){.fadhl-note{left:20px;right:20px;bottom:122px;height:40px;font-size:9px}}
 .card::before,.card::after{display:none}
-.upper-ornament{position:absolute;top:28px;left:42px;right:42px;height:62px;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:0}
-.top-ornament-svg{width:100%;height:62px;overflow:visible}
-.top-ornament-svg path,.top-ornament-svg circle{vector-effect:non-scaling-stroke}
-.orn-lines path{fill:none;stroke:rgba(167,125,56,.55);stroke-width:1}
-.orn-knot path{fill:none;stroke:rgba(167,125,56,.38);stroke-width:1.15}
-.orn-knot circle{fill:#a77d38;opacity:.65}
-.orn-arch{fill:none;stroke:rgba(167,125,56,.72);stroke-width:1.4}
-.orn-arch-inner{fill:none;stroke:rgba(167,125,56,.35);stroke-width:1}
+.upper-ornament{position:absolute;top:27px;left:52px;right:52px;height:64px;display:flex;align-items:center;justify-content:center;pointer-events:none;z-index:0}
+.top-ornament-svg{display:block;width:100%;height:64px}
+.orn-line{fill:none;stroke:rgba(167,125,56,.55);stroke-width:1}
+.orn-knot path{fill:none;stroke:rgba(167,125,56,.42);stroke-width:1.15}
+.orn-knot circle{fill:#a77d38;opacity:.72}
+.orn-arch{fill:none;stroke:rgba(167,125,56,.72);stroke-width:1.45}
+.orn-arch-soft{fill:none;stroke:rgba(167,125,56,.35);stroke-width:1}
 .orn-diamond{fill:#a77d38;stroke:none}
-@media(max-width:650px){.upper-ornament{top:28px;left:28px;right:28px;height:58px}.top-ornament-svg{height:58px}}
+@media(max-width:650px){.upper-ornament{top:27px;left:30px;right:30px;height:58px}.top-ornament-svg{height:58px}}
 .card.fade-out{opacity:0;transform:translateY(8px)}.card.fade-in{animation:cardIn .3s ease}
 @keyframes cardIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
 .zikr{font-family:Amiri,serif;font-size:clamp(24px,3.6vw,34px);line-height:1.85;color:#173c31;max-width:680px;margin:0 auto;text-wrap:balance;overflow-wrap:normal;word-break:normal}.zikr.quran{flex-direction:column;justify-content:flex-start;padding-top:6px}.zikr.quran .istiadhah{font-size:.62em;color:#967238;margin-bottom:14px;font-weight:700;display:block;width:100%;text-align:center}.zikr.quran .quran-text{font-size:.96em;line-height:1.95;text-wrap:balance}.zikr.quran{max-width:690px}.zikr.long{font-size:clamp(21px,3.1vw,29px);line-height:1.8;text-wrap:balance}.zikr.very-long{font-size:clamp(19px,2.8vw,26px);line-height:1.75;text-wrap:balance}
@@ -202,29 +201,30 @@
 </div>
 <article class="card" id="card">
 <div class="upper-ornament" aria-hidden="true">
-<svg class="top-ornament-svg" viewBox="0 0 760 90" preserveAspectRatio="none">
-<g class="orn-lines">
-<path d="M18 45 H142" /><path d="M618 45 H742" />
+<svg class="top-ornament-svg" viewBox="0 0 760 90" preserveAspectRatio="xMidYMid meet">
+<path class="orn-line" d="M22 45 H158" />
+<path class="orn-line" d="M602 45 H738" />
+<g class="orn-knot" transform="translate(158 15)">
+<path d="M0 30 C15 7 36 7 52 30 C36 53 15 53 0 30Z"/>
+<path d="M52 30 C68 7 89 7 104 30 C89 53 68 53 52 30Z"/>
+<path d="M26 5 C44 18 44 42 26 55 C8 42 8 18 26 5Z"/>
+<path d="M78 5 C96 18 96 42 78 55 C60 42 60 18 78 5Z"/>
+<path d="M0 30 H104"/>
+<path d="M18 30 C35 22 69 22 86 30 C69 38 35 38 18 30Z"/>
+<circle cx="52" cy="30" r="3"/>
 </g>
-<g class="orn-knot" transform="translate(120 12)">
-<path d="M0 33 C20 5 43 5 62 33 C43 61 20 61 0 33Z" />
-<path d="M62 33 C82 5 105 5 124 33 C105 61 82 61 62 33Z" />
-<path d="M31 8 C49 22 49 44 31 58 C13 44 13 22 31 8Z" />
-<path d="M93 8 C111 22 111 44 93 58 C75 44 75 22 93 8Z" />
-<path d="M0 33 H124" />
-<circle cx="62" cy="33" r="3.5" />
+<g class="orn-knot" transform="translate(498 15)">
+<path d="M0 30 C15 7 36 7 52 30 C36 53 15 53 0 30Z"/>
+<path d="M52 30 C68 7 89 7 104 30 C89 53 68 53 52 30Z"/>
+<path d="M26 5 C44 18 44 42 26 55 C8 42 8 18 26 5Z"/>
+<path d="M78 5 C96 18 96 42 78 55 C60 42 60 18 78 5Z"/>
+<path d="M0 30 H104"/>
+<path d="M18 30 C35 22 69 22 86 30 C69 38 35 38 18 30Z"/>
+<circle cx="52" cy="30" r="3"/>
 </g>
-<g class="orn-knot" transform="translate(516 12)">
-<path d="M0 33 C20 5 43 5 62 33 C43 61 20 61 0 33Z" />
-<path d="M62 33 C82 5 105 5 124 33 C105 61 82 61 62 33Z" />
-<path d="M31 8 C49 22 49 44 31 58 C13 44 13 22 31 8Z" />
-<path d="M93 8 C111 22 111 44 93 58 C75 44 75 22 93 8Z" />
-<path d="M0 33 H124" />
-<circle cx="62" cy="33" r="3.5" />
-</g>
-<path class="orn-arch" d="M342 70 V25 C342 9 362 3 380 3 C398 3 418 9 418 25 V70" />
-<path class="orn-arch-inner" d="M356 70 V29 C356 18 367 12 380 12 C393 12 404 18 404 29 V70" />
-<path class="orn-diamond" d="M380 31 l8 14 -8 14 -8-14z" />
+<path class="orn-arch" d="M330 72 V35 C330 19 351 6 380 6 C409 6 430 19 430 35 V72"/>
+<path class="orn-arch-soft" d="M344 72 V37 C344 26 359 16 380 16 C401 16 416 26 416 37 V72"/>
+<path class="orn-diamond" d="M380 27 L390 45 L380 63 L370 45 Z"/>
 </svg></div>
 <div class="zikr" id="zikr"></div>
 <div class="fadhl-note" id="fadhlNote"></div>
