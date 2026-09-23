@@ -77,3 +77,9 @@ body.dark .choice{background:#18241f;border-color:rgba(202,174,112,.2)}
 .choice:hover .choice-card-image{transform:scale(1.018);filter:brightness(1.02)}
 .choice-content,.choice .arrow{display:none!important}
 @media(max-width:650px){.choice{aspect-ratio:711/301;border-radius:17px}.choices{gap:9px}}
+
+
+/* Fix card sizing: keep the uploaded artwork at its native landscape ratio */
+.choice{display:block!important;width:100%;height:auto!important;min-height:0!important;aspect-ratio:711/301!important;overflow:hidden}
+.choice-card-image{display:block!important;width:100%!important;height:auto!important;aspect-ratio:711/301;object-fit:contain!important;object-position:center;max-width:100%;border-radius:inherit}
+@media(max-width:650px){.choice{height:auto!important;min-height:0!important;aspect-ratio:711/301!important}.choice-card-image{height:auto!important;aspect-ratio:711/301}}
