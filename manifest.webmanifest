@@ -7,10 +7,19 @@
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
+  "display_override": ["window-controls-overlay", "standalone"],
   "background_color": "#eee5d1",
   "theme_color": "#173c31",
   "orientation": "portrait-primary",
+  "categories": ["lifestyle", "books", "education"],
   "icons": [
-    {"src":"app-icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any maskable"}
+    {"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"},
+    {"src":"app-icon.svg","sizes":"any","type":"image/svg+xml","purpose":"any"}
+  ],
+  "shortcuts": [
+    {"name":"أذكار الصباح","short_name":"الصباح","url":"./adhkar.html?type=morning","icons":[{"src":"icon-192.png","sizes":"192x192","type":"image/png"}]},
+    {"name":"أذكار المساء","short_name":"المساء","url":"./adhkar.html?type=evening","icons":[{"src":"icon-192.png","sizes":"192x192","type":"image/png"}]},
+    {"name":"المسبحة الإلكترونية","short_name":"المسبحة","url":"./tasbeeh.html","icons":[{"src":"icon-192.png","sizes":"192x192","type":"image/png"}]}
   ]
 }
