@@ -243,7 +243,7 @@ const sleepFadhl=[
 "دعاء من أذكار النوم الواردة عن النبي ﷺ."
 ];
 const requestedType=new URLSearchParams(location.search).get("type");const type=requestedType==="evening"||requestedType==="sleep"?requestedType:"morning";document.querySelector(".reader").classList.remove("theme-morning","theme-evening");document.querySelector(".reader").classList.add("theme-"+type);const data=type==="evening"?evening:type==="sleep"?sleep:morning;const storageKey="adhkar-progress-"+type;let savedState={};try{savedState=JSON.parse(localStorage.getItem(storageKey)||"{}")}catch(e){}let i=Number.isInteger(savedState.i)&&savedState.i>=0&&savedState.i<data.length?savedState.i:0,completed=Number.isInteger(savedState.completed)&&savedState.completed>=0?Math.min(savedState.completed,data[i][1]):0,total=0;function saveProgress(){if(i>=data.length){localStorage.removeItem(storageKey);return}localStorage.setItem(storageKey,JSON.stringify({i,completed}))}
-document.getElementById("title").textContent=type==="evening"?"أَذْكَارُ الْمَسَاءِ":type==="sleep"?"أَذْكَارُ النَّوْمِ":"أَذْكَارُ الصَّبَاحِ";const headerIcon=document.getElementById("icon"); headerIcon.classList.remove("icon-morning","icon-evening","icon-sleep"); headerIcon.classList.add("icon-"+type);document.getElementById("session").textContent=type==="evening"?"جلسة المساء":type==="sleep"?"جلسة النوم":"جلسة الصباح";
+document.getElementById("title").textContent=type==="evening"?"أَذْكَارُ الْمَسَاءِ":type==="sleep"?"أَذْكَارُ النَّوْمِ":"أَذْكَارُ الصَّبَاحِ";document.getElementById("session").textContent=type==="evening"?"جلسة المساء":type==="sleep"?"جلسة النوم":"جلسة الصباح";
 const fadhlMorning=[
 "",
 "الإخلاص: تحقيق التوحيد، ومعها المعوذتان تكون من أذكار التحصين، وورد أنها تكفي من قالها صباحًا ومساءً.",
