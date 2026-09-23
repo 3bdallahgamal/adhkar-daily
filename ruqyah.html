@@ -65,8 +65,8 @@ const fadhl=[
 "استعاذة بالله بكلماته التامات من شر ما خلق، وهي من ألفاظ التحصين.",
 "دعاء بطلب الشفاء من الله، وفيه سؤال الله العظيم رب العرش العظيم أن يشفي المريض."
 ];
-function updateFavorite(){const list=JSON.parse(localStorage.getItem("ruqyah-favorites")||"[]");const b=document.getElementById("favoriteBtn");const active=list.includes(i);b.textContent=active?"★":"☆";b.classList.toggle("active",active)}
-function updateCard(){total=data[i][1];completed=0;zikr.textContent=data[i][0];zikr.classList.remove("long","very-long");if(data[i][0].length>150)zikr.classList.add("very-long");else if(data[i][0].length>95)zikr.classList.add("long");countNumber.innerHTML='<span class="counter-value">0</span> <span>/ '+total+'</span>';countNumber.style.setProperty("--progress","0%");counter.textContent="الذكر "+(i+1)+" من "+data.length;fadhlText.textContent=fadhl[i]||"من أدعية الرقية والاستعاذة بالله.";updateFavorite();progress.style.width=(data.length<=1?100:(i/(data.length-1))*100)+"%";prevBtn.disabled=i===0;nextBtn.disabled=i===data.length-1}
+
+function updateCard(){total=data[i][1];completed=0;zikr.textContent=data[i][0];zikr.classList.remove("long","very-long");if(data[i][0].length>150)zikr.classList.add("very-long");else if(data[i][0].length>95)zikr.classList.add("long");countNumber.innerHTML='<span class="counter-value">0</span> <span>/ '+total+'</span>';countNumber.style.setProperty("--progress","0%");counter.textContent="الذكر "+(i+1)+" من "+data.length;fadhlText.textContent=fadhl[i]||"من أدعية الرقية والاستعاذة بالله.";progress.style.width=(data.length<=1?100:(i/(data.length-1))*100)+"%";prevBtn.disabled=i===0;nextBtn.disabled=i===data.length-1}
 function render(){if(i>=data.length){card.style.display="none";document.querySelector(".nav").style.display="none";done.classList.add("show");return}card.style.display="block";document.querySelector(".nav").style.display="flex";done.classList.remove("show");updateCard();card.classList.remove("fade-in");void card.offsetWidth;card.classList.add("fade-in")}
 prevBtn.onclick=()=>{if(i<=0)return;i--;render()};
 nextBtn.onclick=()=>{if(i>=data.length-1)return;i++;render()};let touchStartX=0,touchStartY=0,touchStartTime=0;
@@ -75,7 +75,6 @@ card.addEventListener("touchend",e=>{const t=e.changedTouches[0],dx=t.clientX-to
 
 countNumber.onclick=()=>{if(completed>=total)return;completed++;countNumber.innerHTML='<span class="counter-value">'+completed+'</span> <span>/ '+total+'</span>';countNumber.style.setProperty("--progress",(completed/total*100)+"%");countNumber.classList.remove("is-pressed");void countNumber.offsetWidth;countNumber.classList.add("is-pressed");setTimeout(()=>countNumber.classList.remove("is-pressed"),180);if(completed===total){i++;card.classList.add("fade-out");setTimeout(()=>{card.classList.remove("fade-out");render()},220)}};
 render();
-document.getElementById("favoriteBtn").onclick=()=>{let list=JSON.parse(localStorage.getItem("ruqyah-favorites")||"[]");list=list.includes(i)?list.filter(x=>x!==i):[...list,i];localStorage.setItem("ruqyah-favorites",JSON.stringify(list));updateFavorite()};
 </script>
 </body>
 </html>
