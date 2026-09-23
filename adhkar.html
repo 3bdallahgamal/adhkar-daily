@@ -88,8 +88,40 @@ evening[8][0]="اللَّهُمَّ مَا أَمْسَى بِي مِنْ نِع
 evening[16][0]="أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ رَبِّ الْعَالَمِينَ، اللَّهُمَّ إِنِّي أَسْأَلُكَ خَيْرَ هَذِهِ اللَّيْلَةِ: فَتْحَهَا وَنَصْرَهَا وَنُورَهَا وَبَرَكَتَهَا وَهُدَاهَا، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِيهَا وَشَرِّ مَا بَعْدَهَا.";
 evening[17][0]="أَمْسَيْنَا عَلَى فِطْرَةِ الْإِسْلَامِ، وَعَلَى كَلِمَةِ الْإِخْلَاصِ، وَعَلَى دِينِ نَبِيِّنَا مُحَمَّدٍ ﷺ، وَعَلَى مِلَّةِ أَبِينَا إِبْرَاهِيمَ، حَنِيفًا مُسْلِمًا وَمَا كَانَ مِنَ الْمُشْرِكِينَ.";
 evening.push(["أَعُوذُ بِكَلِمَاتِ اللَّهِ التَّامَّاتِ مِنْ شَرِّ مَا خَلَقَ.",3]);
-const type=new URLSearchParams(location.search).get("type")==="evening"?"evening":"morning";document.querySelector(".reader").classList.remove("theme-morning","theme-evening");document.querySelector(".reader").classList.add("theme-"+type);const data=type==="evening"?evening:morning;const storageKey="adhkar-progress-"+type;let savedState={};try{savedState=JSON.parse(localStorage.getItem(storageKey)||"{}")}catch(e){}let i=Number.isInteger(savedState.i)&&savedState.i>=0&&savedState.i<data.length?savedState.i:0,completed=Number.isInteger(savedState.completed)&&savedState.completed>=0?Math.min(savedState.completed,data[i][1]):0,total=0;function saveProgress(){if(i>=data.length){localStorage.removeItem(storageKey);return}localStorage.setItem(storageKey,JSON.stringify({i,completed}))}
-document.getElementById("title").textContent=type==="evening"?"أَذْكَارُ الْمَسَاءِ":"أَذْكَارُ الصَّبَاحِ";document.getElementById("icon").textContent=type==="evening"?"🌙":"🌅";document.getElementById("session").textContent=type==="evening"?"جلسة المساء":"جلسة الصباح";
+const sleep=[
+["اللَّهُ لَا إِلَهَ إِلَّا هُوَ الْحَيُّ الْقَيُّومُ، لَا تَأْخُذُهُ سِنَةٌ وَلَا نَوْمٌ، لَهُ مَا فِي السَّمَاوَاتِ وَمَا فِي الْأَرْضِ، مَنْ ذَا الَّذِي يَشْفَعُ عِنْدَهُ إِلَّا بِإِذْنِهِ، يَعْلَمُ مَا بَيْنَ أَيْدِيهِمْ وَمَا خَلْفَهُمْ، وَلَا يُحِيطُونَ بِشَيْءٍ مِنْ عِلْمِهِ إِلَّا بِمَا شَاءَ، وَسِعَ كُرْسِيُّهُ السَّمَاوَاتِ وَالْأَرْضَ، وَلَا يَئُودُهُ حِفْظُهُمَا، وَهُوَ الْعَلِيُّ الْعَظِيمُ.",1],
+["آمَنَ الرَّسُولُ بِمَا أُنْزِلَ إِلَيْهِ مِنْ رَبِّهِ وَالْمُؤْمِنُونَ... رَبَّنَا لَا تُؤَاخِذْنَا إِنْ نَسِينَا أَوْ أَخْطَأْنَا... وَاعْفُ عَنَّا وَاغْفِرْ لَنَا وَارْحَمْنَا، أَنْتَ مَوْلَانَا فَانْصُرْنَا عَلَى الْقَوْمِ الْكَافِرِينَ.",1],
+["قُلْ هُوَ اللَّهُ أَحَدٌ، اللَّهُ الصَّمَدُ، لَمْ يَلِدْ وَلَمْ يُولَدْ، وَلَمْ يَكُنْ لَهُ كُفُوًا أَحَدٌ.",3],
+["قُلْ أَعُوذُ بِرَبِّ الْفَلَقِ، مِنْ شَرِّ مَا خَلَقَ، وَمِنْ شَرِّ غَاسِقٍ إِذَا وَقَبَ، وَمِنْ شَرِّ النَّفَّاثَاتِ فِي الْعُقَدِ، وَمِنْ شَرِّ حَاسِدٍ إِذَا حَسَدَ.",3],
+["قُلْ أَعُوذُ بِرَبِّ النَّاسِ، مَلِكِ النَّاسِ، إِلَهِ النَّاسِ، مِنْ شَرِّ الْوَسْوَاسِ الْخَنَّاسِ، الَّذِي يُوَسْوِسُ فِي صُدُورِ النَّاسِ، مِنَ الْجِنَّةِ وَالنَّاسِ.",3],
+["بِاسْمِكَ اللَّهُمَّ أَمُوتُ وَأَحْيَا.",1],
+["اللَّهُمَّ بِاسْمِكَ وَضَعْتُ جَنْبِي، وَبِكَ أَرْفَعُهُ، فَإِنْ أَمْسَكْتَ نَفْسِي فَارْحَمْهَا، وَإِنْ أَرْسَلْتَهَا فَاحْفَظْهَا بِمَا تَحْفَظُ بِهِ عِبَادَكَ الصَّالِحِينَ.",1],
+["اللَّهُمَّ أَسْلَمْتُ نَفْسِي إِلَيْكَ، وَوَجَّهْتُ وَجْهِيَ إِلَيْكَ، وَفَوَّضْتُ أَمْرِي إِلَيْكَ، وَأَلْجَأْتُ ظَهْرِي إِلَيْكَ، رَغْبَةً وَرَهْبَةً إِلَيْكَ، لَا مَلْجَأَ وَلَا مَنْجَا مِنْكَ إِلَّا إِلَيْكَ، آمَنْتُ بِكِتَابِكَ الَّذِي أَنْزَلْتَ، وَبِنَبِيِّكَ الَّذِي أَرْسَلْتَ.",1],
+["اللَّهُمَّ قِنِي عَذَابَكَ يَوْمَ تَبْعَثُ عِبَادَكَ.",3],
+["سُبْحَانَ اللَّهِ.",33],
+["الْحَمْدُ لِلَّهِ.",33],
+["اللَّهُ أَكْبَرُ.",34],
+["الْحَمْدُ لِلَّهِ الَّذِي أَطْعَمَنِي هَذَا، وَرَزَقَنِيهِ، مِنْ غَيْرِ حَوْلٍ مِنِّي وَلَا قُوَّةٍ.",1],
+["آمَنْتُ بِكِتَابِكَ الَّذِي أَنْزَلْتَ، وَبِنَبِيِّكَ الَّذِي أَرْسَلْتَ.",1]
+];
+const sleepFadhl=[
+"ورد في الحديث فضل قراءة آية الكرسي عند النوم، وأن من قرأها لا يزال عليه من الله حافظ حتى يصبح.",
+"ورد فضل قراءة الآيتين من آخر سورة البقرة في الليل، وأنهما تكفيان من قرأهما.",
+"من أذكار النوم: قراءة الإخلاص والمعوذتين ثلاث مرات، والنفث في الكفين ومسح ما استطاع من الجسد.",
+"من أذكار النوم: قراءة الإخلاص والمعوذتين ثلاث مرات، والنفث في الكفين ومسح ما استطاع من الجسد.",
+"من أذكار النوم: قراءة الإخلاص والمعوذتين ثلاث مرات، والنفث في الكفين ومسح ما استطاع من الجسد.",
+"دعاء النوم الوارد عن النبي ﷺ.",
+"دعاء عند وضع الجنب للنوم، وفيه تفويض الأمر إلى الله وطلب حفظ النفس.",
+"من جوامع أدعية النوم، وفيه تسليم النفس والتوكل على الله.",
+"دعاء يُقال عند النوم، وفي الحديث أنه كان يُقال ثلاث مرات.",
+"التسبيح 33 مرة والتحميد 33 مرة والتكبير 34 مرة من الذكر الوارد قبل النوم.",
+"التسبيح 33 مرة والتحميد 33 مرة والتكبير 34 مرة من الذكر الوارد قبل النوم.",
+"التسبيح 33 مرة والتحميد 33 مرة والتكبير 34 مرة من الذكر الوارد قبل النوم.",
+"دعاء بعد الأكل والشرب، وهو من الأذكار الواردة في السنة.",
+"دعاء من أذكار النوم الواردة عن النبي ﷺ."
+];
+const requestedType=new URLSearchParams(location.search).get("type");const type=requestedType==="evening"||requestedType==="sleep"?requestedType:"morning";document.querySelector(".reader").classList.remove("theme-morning","theme-evening");document.querySelector(".reader").classList.add("theme-"+type);const data=type==="evening"?evening:type==="sleep"?sleep:morning;const storageKey="adhkar-progress-"+type;let savedState={};try{savedState=JSON.parse(localStorage.getItem(storageKey)||"{}")}catch(e){}let i=Number.isInteger(savedState.i)&&savedState.i>=0&&savedState.i<data.length?savedState.i:0,completed=Number.isInteger(savedState.completed)&&savedState.completed>=0?Math.min(savedState.completed,data[i][1]):0,total=0;function saveProgress(){if(i>=data.length){localStorage.removeItem(storageKey);return}localStorage.setItem(storageKey,JSON.stringify({i,completed}))}
+document.getElementById("title").textContent=type==="evening"?"أَذْكَارُ الْمَسَاءِ":type==="sleep"?"أَذْكَارُ النَّوْمِ":"أَذْكَارُ الصَّبَاحِ";document.getElementById("icon").textContent=type==="evening"?"🌙":type==="sleep"?"🌌":"🌅";document.getElementById("session").textContent=type==="evening"?"جلسة المساء":type==="sleep"?"جلسة النوم":"جلسة الصباح";
 const fadhlMorning=[
 "",
 "الإخلاص: تحقيق التوحيد، ومعها المعوذتان تكون من أذكار التحصين، وورد أنها تكفي من قالها صباحًا ومساءً.",
@@ -118,7 +150,7 @@ const fadhlMorning=[
 "استعاذة بالله من شر ما خلق، وهو من أذكار التحصين.",
 "الصلاة والسلام على النبي ﷺ من أبواب الأجر والفضل، وقد حثّ النبي ﷺ على الإكثار منها."
 ];
-function getFadhl(index,type){if(index===0)return "";return fadhlMorning[index]||"ورد هذا الذكر ضمن أذكار الكتاب والسنة وأذكار الصباح والمساء."}
+function getFadhl(index,type){if(index===0&&type!=="sleep")return "";if(type==="sleep")return sleepFadhl[index]||"ورد هذا الذكر ضمن أذكار النوم والسنة.";return fadhlMorning[index]||"ورد هذا الذكر ضمن أذكار الكتاب والسنة وأذكار الصباح والمساء."}
 
 function updateCard(){total=data[i][1];completed=Math.min(completed,total);const zikrEl=document.getElementById("zikr");const rawZikr=data[i][0];const isQuran=rawZikr.includes("﴿")||rawZikr.startsWith("قُلْ ");zikrEl.classList.remove("long","very-long","quran");if(isQuran){const istiadhah="أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ";let quranText=rawZikr;if(quranText.startsWith(istiadhah+" ")){quranText=quranText.slice(istiadhah.length).trim();}zikrEl.innerHTML="<div class=\"istiadhah\">"+istiadhah+"</div><div class=\"quran-text\">"+quranText+"</div>";zikrEl.classList.add("quran");}else{zikrEl.textContent=rawZikr;}if(data[i][0].length>220)zikrEl.classList.add("very-long");else if(data[i][0].length>130)zikrEl.classList.add("long");document.getElementById("countNumber").innerHTML='<span class="counter-value">'+completed+'</span> <span>/ '+total+'</span>';document.getElementById("countNumber").style.setProperty("--progress",(completed/total*100)+"%");document.getElementById("counter").textContent="الذكر "+(i+1)+" من "+data.length;document.getElementById("fadhlNote").textContent=getFadhl(i,type);updateOverallProgress()}
 function updateOverallProgress(){let all=data.length;document.getElementById("progress").style.width=(all<=1?100:(i/(all-1))*100)+"%"}function updateNavButtons(){document.getElementById("prevBtn").disabled=i<=0;document.getElementById("nextBtn").disabled=i>=data.length-1}
