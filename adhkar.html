@@ -231,7 +231,7 @@ const morning=[
 ["لَا إلَه إلّا اللهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءِ قَدِيرِ.",100],
 ["سُبْحانَ اللهِ وَبِحَمْدِهِ.",100],
 ["أسْتَغْفِرُ اللهَ وَأتُوبُ إلَيْهِ",100],
-
+];
 const evening=morning.filter((_,idx)=>![20,21,22].includes(idx)).map(([text,count])=>[text,count]);
 evening[4][0]="أَمْسَيْنَا وَأَمْسَى الْمُلْكُ لِلَّهِ، وَالْحَمْدُ لِلَّهِ، لَا إِلَهَ إِلَّا اللَّهُ وَحْدَهُ لَا شَرِيكَ لَهُ، لَهُ الْمُلْكُ وَلَهُ الْحَمْدُ وَهُوَ عَلَى كُلِّ شَيْءٍ قَدِيرٌ، رَبِّ أَسْأَلُكَ خَيْرَ مَا فِي هَذِهِ اللَّيْلَةِ وَخَيْرَ مَا بَعْدَهَا، وَأَعُوذُ بِكَ مِنْ شَرِّ مَا فِي هَذِهِ اللَّيْلَةِ وَشَرِّ مَا بَعْدَهَا، رَبِّ أَعُوذُ بِكَ مِنَ الْكَسَلِ وَسُوءِ الْكِبَرِ، رَبِّ أَعُوذُ بِكَ مِنْ عَذَابٍ فِي النَّارِ وَعَذَابٍ فِي الْقَبْرِ.";
 evening[5][0]="اللَّهُمَّ بِكَ أَمْسَيْنَا، وَبِكَ أَصْبَحْنَا، وَبِكَ نَحْيَا، وَبِكَ نَمُوتُ، وَإِلَيْكَ الْمَصِيرُ.";
@@ -306,7 +306,7 @@ const fadhlMorning=[
 "من قالها 100 مرة في يوم كانت له عدل عشر رقاب، وكتبت له مئة حسنة، ومحيت عنه مئة سيئة، وكانت له حرزا من الشيطان في يومه ذلك حتى يمسي ولم يأتي أحد بأفضل مما جاء به إلا احد عمل أكثر من ذلك.\nرواه الترمذي",
 "من قال : سبحان اللهِ وبحمدِه مائةَ مرةٍ غُفرَتْ له ذنوبُه وإنْ كانتْ مثلَ زبَدِ البحرِ.\nرواه مسلم",
 "رواه البخاري",
-
+];
 function getFadhl(index,type){if(index===0&&type!=="sleep")return "";if(type==="sleep")return sleepFadhl[index]||"ورد هذا الذكر ضمن أذكار النوم والسنة.";return fadhlMorning[index]||"ورد هذا الذكر ضمن أذكار الكتاب والسنة وأذكار الصباح والمساء."}
 
 function updateCard(){total=data[i][1];completed=Math.min(completed,total);const zikrEl=document.getElementById("zikr");const rawZikr=data[i][0];const isQuran=rawZikr.includes("﴿")||rawZikr.startsWith("قُلْ ");zikrEl.classList.remove("long","very-long","quran");if(isQuran){const istiadhah="أَعُوذُ بِاللَّهِ مِنَ الشَّيْطَانِ الرَّجِيمِ";let quranText=rawZikr;if(quranText.startsWith(istiadhah+" ")){quranText=quranText.slice(istiadhah.length).trim();}zikrEl.innerHTML="<div class=\"istiadhah\">"+istiadhah+"</div><div class=\"quran-text\">"+quranText+"</div>";zikrEl.classList.add("quran");}else{zikrEl.textContent=rawZikr;}if(data[i][0].length>220)zikrEl.classList.add("very-long");else if(data[i][0].length>130)zikrEl.classList.add("long");document.getElementById("countNumber").innerHTML='<span class="counter-value">'+completed+'</span> <span>/ '+total+'</span>';document.getElementById("countNumber").style.setProperty("--progress",(completed/total*100)+"%");document.getElementById("counter").textContent="الذكر "+(i+1)+" من "+data.length;document.getElementById("fadhlNote").textContent=getFadhl(i,type);updateOverallProgress()}
