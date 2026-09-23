@@ -6,16 +6,20 @@
 <title>المسبحة الإلكترونية | أذكاري اليومية</title>
 <link rel="stylesheet" href="style.css">
 <style>
-.tasbeeh-page{min-height:100svh;padding:24px 16px 40px;background:radial-gradient(circle at 50% 18%,#fffdf6 0,#f5f0e5 48%,#e9e1cf 100%)}
-.tasbeeh-wrap{width:min(620px,100%);margin:auto}
-.tasbeeh-top{display:flex;justify-content:space-between;align-items:center;color:#718079;font-size:13px;margin-bottom:28px}
-.tasbeeh-top a{color:#a77d38;font-weight:700}
-.tasbeeh-header{text-align:center}
-.tasbeeh-icon{font-size:40px}
-.tasbeeh-header h1{font-size:44px;margin:5px 0;color:#183d32}
-.tasbeeh-header p{margin:0;color:#77857f;font-size:14px}
-.tasbeeh-card{margin-top:25px;background:rgba(255,255,255,.82);border:1px solid rgba(24,61,50,.12);border-radius:30px;padding:28px 22px;box-shadow:0 20px 55px rgba(36,58,49,.09);text-align:center}.dhikr-list{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 10px;margin-bottom:8px;scrollbar-width:thin}.dhikr-option{flex:0 0 auto;border:1px solid rgba(24,61,50,.12);background:#f7f1e2;color:#5f7169;border-radius:16px;padding:9px 12px;font:600 12px Cairo;cursor:pointer}.dhikr-option.active{background:#e5ece7;color:#183d32;border-color:rgba(167,125,56,.38)}.dhikr-target{font-size:11px;color:#8a938e;margin-top:2px}
-.zikr-name{font-family:Amiri,serif;font-size:32px;color:#173c31;line-height:1.7}
+.tasbeeh-page{min-height:100svh;padding:12px 14px 20px;background:#e9e1cf;color:#173c31;position:relative;overflow:hidden;display:flex;align-items:flex-start}
+.tasbeeh-page::before{content:"";position:absolute;inset:0;opacity:.22;background-image:radial-gradient(circle at center,transparent 0 42px,rgba(151,113,48,.18) 43px 44px,transparent 45px),radial-gradient(circle at center,transparent 0 20px,rgba(151,113,48,.12) 21px 22px,transparent 23px);background-size:84px 84px;transform:rotate(45deg);pointer-events:none}
+.tasbeeh-wrap{width:min(720px,100%);margin:8px auto 0;position:relative;z-index:1}
+.tasbeeh-top{display:flex;justify-content:space-between;align-items:center;color:#74817a;font-size:12px;margin-bottom:13px}
+.tasbeeh-top a{color:#9d7939;font-weight:700}
+.tasbeeh-header{text-align:center;margin-bottom:10px;min-height:88px;display:flex;flex-direction:column;justify-content:flex-start;align-items:center}
+.tasbeeh-icon{font-size:30px;line-height:1;height:30px}
+.tasbeeh-header h1{font-family:Amiri,serif;font-size:40px;line-height:1.05;margin:0;color:#173c31;font-weight:700}
+.tasbeeh-header p{margin:7px 0 0;color:#77857f;font-size:12px}
+.tasbeeh-card{position:relative;margin:0 auto;background:#f7f1e2;border:2px solid rgba(151,113,48,.42);border-radius:120px 120px 24px 24px;padding:28px 22px 30px;box-shadow:0 18px 45px rgba(60,57,42,.13);text-align:center;overflow:hidden}
+.tasbeeh-card::before{content:"";position:absolute;top:14px;left:50%;transform:translateX(-50%);width:72px;height:18px;border-top:1px solid rgba(151,113,48,.55);border-bottom:1px solid rgba(151,113,48,.25);border-radius:50%}
+.tasbeeh-card::after{content:"✦";position:absolute;top:14px;left:50%;transform:translateX(-50%);color:#a77d38;font-size:12px;background:#f7f1e2;padding:0 7px}
+.dhikr-list{display:flex;gap:8px;overflow-x:auto;padding:2px 2px 10px;margin:8px 0 8px;scrollbar-width:thin}.dhikr-option{flex:0 0 auto;border:1px solid rgba(24,61,50,.12);background:#eee8d9;color:#5f7169;border-radius:16px;padding:9px 12px;font:600 12px Cairo;cursor:pointer}.dhikr-option.active{background:#e5ece7;color:#183d32;border-color:rgba(167,125,56,.38)}
+.zikr-name{font-family:Amiri,serif;font-size:32px;color:#173c31;line-height:1.7;margin-top:10px}
 .count{font-family:Amiri,serif;font-size:70px;line-height:1;color:#a77d38;margin:20px 0 5px}
 .target{color:#7a867f;font-size:13px}.fadhl{margin:18px auto 0;padding-top:13px;border-top:1px solid rgba(151,113,48,.18);max-width:560px}.fadhl-title{font-size:12px;color:#967238;font-weight:700;margin-bottom:4px}.fadhl-text{font-size:11px;line-height:1.8;color:#7a857f}
 .tap-circle{width:180px;height:180px;border-radius:50%;border:10px solid #dfe7e2;background:#183d32;color:#fff;font:700 21px Cairo;cursor:pointer;margin:25px auto 18px;display:grid;place-items:center;box-shadow:0 14px 30px rgba(24,61,50,.2);transition:.12s}
@@ -24,9 +28,9 @@
 .done-message{display:none;color:#527d6c;font-weight:700;margin-top:8px}
 .done-message.show{display:block}
 @media(max-width:650px){
- .tasbeeh-page{padding:18px 13px 30px}
- .tasbeeh-header h1{font-size:39px}
- .tasbeeh-card{padding:27px 18px;border-radius:24px}
+ .tasbeeh-page{padding:10px 11px 18px}
+ .tasbeeh-header h1{font-size:36px}
+ .tasbeeh-card{padding:38px 17px 30px;border-radius:90px 90px 20px 20px}
  .zikr-name{font-size:29px}
  .tap-circle{width:165px;height:165px}
 }
