@@ -68,7 +68,7 @@ const fadhl=[
 
 function updateCard(){total=data[i][1];completed=0;zikr.textContent=data[i][0];zikr.classList.remove("long","very-long");if(data[i][0].length>150)zikr.classList.add("very-long");else if(data[i][0].length>95)zikr.classList.add("long");countNumber.innerHTML='<span class="counter-value">0</span> <span>/ '+total+'</span>';countNumber.style.setProperty("--progress","0%");counter.textContent="الذكر "+(i+1)+" من "+data.length;fadhlText.textContent=fadhl[i]||"من أدعية الرقية والاستعاذة بالله.";progress.style.width=(data.length<=1?100:(i/(data.length-1))*100)+"%";prevBtn.disabled=i===0;nextBtn.disabled=i===data.length-1}
 function render(){if(i>=data.length){card.style.display="none";document.querySelector(".nav").style.display="none";done.classList.add("show");return}card.style.display="block";document.querySelector(".nav").style.display="flex";done.classList.remove("show");updateCard();card.classList.remove("fade-in");void card.offsetWidth;card.classList.add("fade-in")}
-document.getElementById("shareBtn").onclick=shareCurrent;prevBtn.onclick=()=>{if(i<=0)return;i--;render()};
+prevBtn.onclick=()=>{if(i<=0)return;i--;render()};
 nextBtn.onclick=()=>{if(i>=data.length-1)return;i++;render()};let touchStartX=0,touchStartY=0,touchStartTime=0;
 card.addEventListener("touchstart",e=>{const t=e.changedTouches[0];touchStartX=t.clientX;touchStartY=t.clientY;touchStartTime=Date.now()},{passive:true});
 card.addEventListener("touchend",e=>{const t=e.changedTouches[0],dx=t.clientX-touchStartX,dy=t.clientY-touchStartY;if(Date.now()-touchStartTime<600&&Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy)*1.25){if(dx<0&&i<data.length-1){i++;render()}else if(dx>0&&i>0){i--;render()}}},{passive:true});
