@@ -1,13 +1,86 @@
 <!doctype html>
 <html lang="ar" dir="rtl">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>الأدعية</title><link rel="stylesheet" href="style.css"></head>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>الأدعية</title>
+<link rel="stylesheet" href="style.css">
+<style>
+.duas-page{min-height:100svh;padding:12px 14px 20px;background:#e9e1cf;color:#173c31;position:relative;overflow:hidden;display:flex;align-items:flex-start}
+.duas-page::before{content:"";position:absolute;inset:0;opacity:.22;background-image:radial-gradient(circle at center,transparent 0 42px,rgba(151,113,48,.18) 43px 44px,transparent 45px),radial-gradient(circle at center,transparent 0 20px,rgba(151,113,48,.12) 21px 22px,transparent 23px);background-size:84px 84px;transform:rotate(45deg);pointer-events:none}
+.duas-reader{width:min(720px,100%);margin:8px auto 0;position:relative;z-index:1}
+.duas-top{display:flex;justify-content:space-between;align-items:center;color:#74817a;font-size:12px;margin-bottom:13px}
+.duas-top .back{color:#9d7939;font-weight:700}
+.duas-header{text-align:center;margin-bottom:10px;min-height:76px;display:flex;flex-direction:column;justify-content:flex-start;align-items:center}
+.duas-header h1{font-family:Amiri,serif;font-size:40px;line-height:1.05;margin:0;color:#173c31;font-weight:700}
+.duas-header .mosque-icon{font-size:30px;line-height:1;margin-top:7px;height:30px}
+.duas-nav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:0 auto 8px;padding:4px 6px;background:rgba(247,241,226,.38);border:1px solid rgba(151,113,48,.12);border-radius:14px;max-width:420px}
+.dua-arrow{width:30px;height:30px;border:0;border-radius:50%;background:transparent;color:#967238;font-size:24px;line-height:1;display:grid;place-items:center;cursor:pointer}
+.dua-arrow:active{transform:scale(.92)}
+.dua-arrow:disabled{opacity:.25;cursor:default}
+.dua-card{position:relative;background:#f7f1e2;border:2px solid rgba(151,113,48,.42);border-radius:120px 120px 24px 24px;padding:48px 34px 38px;box-shadow:0 18px 45px rgba(60,57,42,.13);text-align:center;overflow:hidden;height:calc(100svh - 275px);min-height:560px;display:flex;align-items:center;justify-content:center}
+.dua-card::before{content:"";position:absolute;top:14px;left:50%;transform:translateX(-50%);width:72px;height:18px;border-top:1px solid rgba(151,113,48,.55);border-bottom:1px solid rgba(151,113,48,.25);border-radius:50%}
+.dua-card::after{content:"✦";position:absolute;top:14px;left:50%;transform:translateX(-50%);color:#a77d38;font-size:12px;background:#f7f1e2;padding:0 7px}
+.dua-text{font-family:Amiri,serif;font-size:clamp(24px,3.6vw,34px);line-height:1.9;color:#173c31;max-width:650px;margin:0 auto;text-wrap:balance;overflow-wrap:normal}
+.dua-text.long{font-size:clamp(21px,3.1vw,29px);line-height:1.85}
+.dua-text.very-long{font-size:clamp(18px,2.7vw,25px);line-height:1.8}
+.dua-heading{display:block;font-size:.8em;color:#967238;margin-bottom:18px;font-weight:700}
+.dua-fade-in{animation:duaIn .3s ease}
+@keyframes duaIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:650px){
+.duas-page{padding:10px 11px 18px}.duas-top{margin-bottom:11px}.duas-header{margin-bottom:8px}.duas-header h1{font-size:36px}
+.duas-nav{margin-bottom:7px;padding:3px 5px}.dua-arrow{width:28px;height:28px;font-size:22px}
+.dua-card{padding:42px 18px 30px;border-radius:90px 90px 20px 20px;height:calc(100svh - 250px);min-height:500px}
+.dua-text{font-size:25px;line-height:1.85}.dua-text.long{font-size:22px;line-height:1.8}.dua-text.very-long{font-size:19px;line-height:1.75}
+}
+</style>
+</head>
 <body>
-<main class="adhkar-page">
-<div class="reader">
-<div class="top"><a class="back" href="index.html">← الرئيسية</a><span>قسم الأدعية</span></div>
-<div class="header"><h1>الأدعية</h1></div>
-<article class="card"><div class="zikr">سيتم إضافة الأدعية هنا قريبًا</div></article>
+<main class="duas-page">
+<div class="duas-reader">
+<div class="duas-top"><a class="back" href="index.html">← الرئيسية</a><span>قسم الأدعية</span></div>
+<div class="duas-header"><h1>الأدعية</h1><div class="mosque-icon" aria-hidden="true">🕌</div></div>
+<div class="duas-nav" aria-label="التنقل بين الأدعية">
+<button class="dua-arrow" id="prevBtn" type="button" aria-label="الدعاء السابق">‹</button>
+<div></div>
+<button class="dua-arrow" id="nextBtn" type="button" aria-label="الدعاء التالي">›</button>
+</div>
+<article class="dua-card" id="card"><div class="dua-text" id="duaText"></div></article>
 </div>
 </main>
+<script>
+const duas=[
+`اللهم إني أعوذ بك من الفشل، وقلة التوفيق، ومن التعلق بذنوب تجلب الفقر، وتسبب الضيق، وأعوذ بك من البعد عنك، وإهمال طاعتك، وأعوذ بك يا الله من فقدان الشغف، وسعي يستنزف الجهد والوقت بلا جدوى، وحياة بلا هدف، وأعوذ بك من طول النية، وحرمان الوصول، ومن العسر بعد اليسر، اللهم أصلح حالنا ويسر أمورنا ولا تمنع عنا رحمتك يا الله..`,
+`اللهم إني أسألك باسمك العظيم أن ترفع قدري وتشرح صدري، وأن تجعل الجنة داري ومستقري.`,
+`اللهم إني أسألك باسمك العظيم أن تُسعد قلبي سعادة لا تغادر تفاصيل أيامي أبدًا.`,
+`اللهم إني أسألك باسمك العظيم أن تُغنيني من فضلك وتيسر لي كل عسير، وأن تفتح لي أبواب الخير والرزق.`,
+`اللهم إني أسألك باسمك العظيم أن تنير بصيرتي وتهديني إلى الحق والصواب، وأن تجعلني من عبادك الشاكرين الذاكرين.`,
+`اللهم إني أسألك باسمك العظيم أن تحفظني من فواجع الأقدار، ومن كل عين حاسدة، ومن كل شر مستتر.`,
+`اللهم إني أسألك باسمك العظيم أن تجبر كسري وتبدل حزني فرحًا، وهمي فرجًا، وعسري يسرًا.`,
+`اللهم ارزقني عملًا صالحًا يغنيني عن سؤال الخلق، ويكفيني في أمر الدنيا، ويصلحني في أمر الآخرة. اللهم يا رحمن يا رحيم، يا ذا الجلال والإكرام، أسألك وظيفة طيبة تدر عليّ مالًا حلالًا طيبًا مباركًا فيه. اللهم يا كريم يا مالك الملك يا عزيزًا لا يضام، اللهم إن كان رزقي في السماء فأقره، وإن كان في الأرض فأخرجه، وإن كان بعيدًا فقربه، وإن كان صعبًا فسَهِّله، وإن كان عسيرًا فيسره. اللهم ما أصبح بي من نعمة أو بأحد من خلقك فمنك وحدك لا شريك لك، لك الحمد ولك الشكر. اللهم اكتب لي التوفيق والنجاح في كل خطوة. اللهم يسر لي الحصول على وظيفة طيبة مريحة ترضيني وتهدي قلبي. اللهم إذا احترت فسددني، وإذا سددت (ضللت) فاختر لي يا رب، فإني لا أحسن الاختيار. اللهم لا تجعل عيشي في الدنيا كدًا، ولا تجعل حياتي فيها نكدًا.`,
+`رب هب لي، اللهم هب لي ملكًا وجاهًا، هب لي مالًا وآخر وهب لي تسخيرًا، وهب لي عونًا وقوة، وهب لي سعادة وما تمنيت، وسخر لي الأسباب والأشخاص والأماكن ولا تجعلني ضائعًا لا أملك جهة ولا بوصلة. يارب دلني ووجهني، يارب ارحمني وقوني بك وأغفر لي زلاتي وهفواتي يا رب. سخر لي من في السماء ومن هم على الأرض... يارب يا منان يا واسع أنت الكريم الوهاب، ارزقني أيام طيبة أعيش فيها بقلب آمن وروح ونفس ساكنة لا يملأني القلق ولا يؤرقني الخوف. هادئة.`,
+`اللهم امنحني ثباتًا لا تهزه المواقف، وبصيرة تجعلني أعرف متى أتكلم ومتى أصمت، وقوة تحفظ كرامتي دون ظلم، وشجاعة تواجه خوفي دون تهور، وحكمة تجعل حضوري هادئًا وواثقًا، ولا تجعلني أسيرًا لرأي الناس، بل عبدًا يعرف قدره، ويستمد قوته من رضاه عنك وثقته بك.`,
+`اللهم سخر لي في عملي هذا من يخافك ويرحمني، واجعل لي فيه قبولًا وتوفيقًا. اللهم ابعد عني شر الحاسدين والمكرين، وسخر لي جوارحي لطاعتك وإتقان عملي، واجعل رزقي حلالًا طيبًا مباركًا، وافتح لي فيه أبواب الترقية والخير.`,
+`اللهم يا أكرم الأكرمين ويا أرحم الراحمين، يا من تسجد له الجبال وتسبح بحمده الأفواه، أسألك بأسمائك الحسنى وبصفاتك العظمى الذي إذا سُئلت بها أجبت حاجتك.`,
+`اللهم بارك في عملي وسعيي، وقرب إليّ زيادة في راتبي تكون خيرًا لي، ووسع بها رزقي، وبارك في مالي، وألهم من بيده أمري تقدير جهدي، واجعل الزيادة تأتي بيسر وكرامة، وتكون سببًا لسعة العيش وراحة البال، ونفعًا لي ولمن أحب.`,
+`عَوِّد نفسك كل صباح أن تقول: بسم الله الكافي، بسم الله الشافي، بسم الله المعافي، بسم الله الذي لا يضر مع اسمه أذى، بسم الله على نفسي وديني، بسم الله على أهلي ومالي، بسم الله على كل شيء أعطاني ربي. الله أكبر، الله أكبر، الله أكبر. أعوذ بالله مما أخاف وأحذر، الله ربي ولا أشرك به أحدًا، عز جارك، وجل ثناؤك، وتقدست أسماؤك ولا إله غيرك يا الله. بسم الله الذي لا يضر مع اسمه شيء في الأرض ولا في السماء وهو السميع العليم. أعوذ بالله مما أخاف وأحذر، الله ربي ولا أشرك به أحدًا، عز جارك، وجل ثناؤك، وتقدست أسماؤك ولا إله غيرك يا الله.`,
+`اللهم إني استودعتك يومي فأرني فيه ما يسعدني ويسرني، وابعد عني ما يضرني، إنك على كل شيء قدير.`
+];
+let i=0;
+const textEl=document.getElementById("duaText");
+const card=document.getElementById("card");
+function render(){
+ textEl.className="dua-text";
+ if(duas[i].length>500)textEl.classList.add("very-long");
+ else if(duas[i].length>260)textEl.classList.add("long");
+ textEl.textContent=duas[i];
+ card.classList.remove("dua-fade-in");void card.offsetWidth;card.classList.add("dua-fade-in");
+ document.getElementById("prevBtn").disabled=i===0;
+ document.getElementById("nextBtn").disabled=i===duas.length-1;
+}
+document.getElementById("prevBtn").onclick=()=>{if(i>0){i--;render()}};
+document.getElementById("nextBtn").onclick=()=>{if(i<duas.length-1){i++;render()}};
+render();
+</script>
 </body>
 </html>
