@@ -83,6 +83,8 @@ function render(){
  if(duas[i].length>500)textEl.classList.add("very-long");
  else if(duas[i].length>260)textEl.classList.add("long");
  textEl.textContent=duas[i];
+ document.getElementById("duaProgress").textContent=`الدعاء ${i+1} من ${duas.length}`;
+ document.getElementById("duaProgressFill").style.width=`${((i+1)/duas.length)*100}%`;
  card.classList.remove("dua-fade-in");void card.offsetWidth;card.classList.add("dua-fade-in");
  document.getElementById("nextBtn").disabled=i===duas.length-1;
  document.getElementById("nextBtn").innerHTML=i===duas.length-1?'تمّ <span>✓</span>':'التالي <span>←</span>';
