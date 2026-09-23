@@ -179,7 +179,7 @@
   }
 }
 </style></head>
-<body><button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الليلي" type="button" onclick="document.body.classList.toggle('dark');localStorage.setItem('adhkar-theme',document.body.classList.contains('dark')?'dark':'light');this.textContent=document.body.classList.contains('dark')?'☀':'☾'">☾</button>
+<body>
 <main class="adhkar-page"><div class="reader theme-morning">
 <div class="top"><a class="back" href="index.html">← الرئيسية</a><span id="session"></span></div>
 <div class="header"><h1 id="title">أذكار الصباح</h1></div>
@@ -312,5 +312,5 @@ swipeTarget.addEventListener("touchend",e=>{const t=e.changedTouches[0];const dx
 const tap=document.getElementById("countNumber"),countNumber=document.getElementById("countNumber");const prevBtn=document.getElementById("prevBtn"),nextBtn=document.getElementById("nextBtn");prevBtn.onclick=()=>{if(i<=0)return;i--;completed=0;saveProgress();render()};nextBtn.onclick=()=>{if(i>=data.length-1)return;i++;completed=0;saveProgress();render()};
 tap.onclick=()=>{if(completed>=total)return;completed++;saveProgress();countNumber.innerHTML='<span class="counter-value">'+completed+'</span> <span>/ '+total+'</span>';countNumber.style.setProperty("--progress",(completed/total*100)+"%");updateOverallProgress();tap.classList.remove("is-pressed");void tap.offsetWidth;tap.classList.add("is-pressed");setTimeout(()=>tap.classList.remove("is-pressed"),180);if(completed===total){i++;completed=0;saveProgress();tap.classList.remove("is-pressed");document.getElementById("card").classList.add("fade-out");setTimeout(()=>{document.getElementById("card").classList.remove("fade-out");render()},220)}};render();
 </script>
-<script>if(localStorage.getItem("adhkar-theme")==="dark"){document.body.classList.add("dark");document.getElementById("themeToggle").textContent="☀"}</script></body>
+</body>
 </html>
