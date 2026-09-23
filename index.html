@@ -19,7 +19,7 @@
   <section class="hero">
     <header class="home-header">
       <div class="brand"><span class="brand-mark">☾</span><span>أذكاري اليومية</span></div>
-      <button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الليلي" type="button" onclick="document.body.classList.toggle('dark');localStorage.setItem('adhkar-theme',document.body.classList.contains('dark')?'dark':'light');this.textContent=document.body.classList.contains('dark')?'☀':'☾'">☾</button>
+      
     </header>
 
     <div class="hero-intro">
@@ -58,7 +58,6 @@
     <div class="quote">﴿ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ﴾</div>
   </section>
 </main>
-<script>if(localStorage.getItem("adhkar-theme")==="dark"){document.body.classList.add("dark");document.getElementById("themeToggle").textContent="☀"}</script>
 <script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}))}</script>
 </body>
 </html>
