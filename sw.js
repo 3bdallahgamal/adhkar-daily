@@ -1,4 +1,4 @@
-const CACHE_NAME="adhkar-daily-v13";
+const CACHE_NAME="adhkar-daily-v14";
 const ASSETS=[
   "./",
   "./index.html",
@@ -11,7 +11,8 @@ const ASSETS=[
   "./evening-scene.png",
   "./app-icon.svg",
   "./assets/home-illustrations.jpg",
-  "./assets/home-scenes.svg"
+  "./assets/home-scenes.svg",
+  "./assets/home-scenes-sprite.jpg"
 ];
 self.addEventListener("install",event=>{
   event.waitUntil(caches.open(CACHE_NAME).then(cache=>cache.addAll(ASSETS)).then(()=>self.skipWaiting()));
