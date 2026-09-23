@@ -6,7 +6,7 @@
 <title>أذكاري اليومية</title>
 <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body><button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الليلي">☾</button>
 <main class="home">
   <div class="glow glow-one"></div><div class="glow glow-two"></div>
   <section class="hero">
@@ -42,5 +42,5 @@
     <div class="quote">﴿ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ﴾</div>
   </section>
 </main>
-</body>
+<script>const theme=localStorage.getItem("adhkar-theme");if(theme==="dark")document.body.classList.add("dark");const themeToggle=document.getElementById("themeToggle");themeToggle.textContent=document.body.classList.contains("dark")?"☀":"☾";themeToggle.onclick=()=>{document.body.classList.toggle("dark");const dark=document.body.classList.contains("dark");localStorage.setItem("adhkar-theme",dark?"dark":"light");themeToggle.textContent=dark?"☀":"☾"};</script></body>
 </html>
