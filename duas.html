@@ -89,7 +89,10 @@ function render(){
  document.getElementById("nextBtn").disabled=i===duas.length-1;
  document.getElementById("nextBtn").innerHTML=i===duas.length-1?'تمّ <span>✓</span>':'التالي <span>←</span>';
 }
-document.getElementById("nextBtn").onclick=()=>{if(i<duas.length-1){i++;render()}};
+document.getElementById("nextBtn").onclick=()=>{if(i<duas.length-1){i++;render()}};let touchStartX=0,touchStartY=0,touchStartTime=0;
+card.addEventListener("touchstart",e=>{const t=e.changedTouches[0];touchStartX=t.clientX;touchStartY=t.clientY;touchStartTime=Date.now()},{passive:true});
+card.addEventListener("touchend",e=>{const t=e.changedTouches[0],dx=t.clientX-touchStartX,dy=t.clientY-touchStartY;if(Date.now()-touchStartTime<600&&Math.abs(dx)>55&&Math.abs(dx)>Math.abs(dy)*1.25){if(dx<0&&i<duas.length-1){i++;render()}else if(dx>0&&i>0){i--;render()}}},{passive:true});
+
 render();
 </script>
 </body>
