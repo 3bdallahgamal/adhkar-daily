@@ -9,14 +9,25 @@
 <meta name="theme-color" content="#173c31">
 <link rel="icon" href="app-icon.svg">
 </head>
-<body><button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الليلي" type="button" onclick="document.body.classList.toggle('dark');localStorage.setItem('adhkar-theme',document.body.classList.contains('dark')?'dark':'light');this.textContent=document.body.classList.contains('dark')?'☀':'☾'">☾</button>
+<body>
 <main class="home">
-  <div class="glow glow-one"></div><div class="glow glow-two"></div>
+  <div class="bg-pattern"></div>
+  <div class="glow glow-one"></div>
+  <div class="glow glow-two"></div>
+  <div class="glow glow-three"></div>
+
   <section class="hero">
-    <div class="brand">✦ أذكاري اليومية</div>
-    <div class="ornament">﷽</div>
-    <h1>وردك اليوم <span>بذكر الله</span></h1>
-    <p>اختر ما يناسب وقتك وابدأ لحظتك مع الذكر.</p>
+    <header class="home-header">
+      <div class="brand"><span class="brand-mark">☾</span><span>أذكاري اليومية</span></div>
+      <button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الليلي" type="button" onclick="document.body.classList.toggle('dark');localStorage.setItem('adhkar-theme',document.body.classList.contains('dark')?'dark':'light');this.textContent=document.body.classList.contains('dark')?'☀':'☾'">☾</button>
+    </header>
+
+    <div class="hero-intro">
+      <div class="ornament">﷽</div>
+      <div class="ornament-line"><span></span><b>✦</b><span></span></div>
+      <h1>وردك اليوم <span>بذكر الله</span></h1>
+      <p>ابدأ لحظتك مع الذكر، ودع قلبك يطمئن.</p>
+    </div>
 
     <div class="section-title">أذكار اليوم</div>
     <div class="choices">
@@ -47,5 +58,7 @@
     <div class="quote">﴿ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ﴾</div>
   </section>
 </main>
-<script>if(localStorage.getItem("adhkar-theme")==="dark"){document.body.classList.add("dark");document.getElementById("themeToggle").textContent="☀"}</script><script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}))}</script></body>
+<script>if(localStorage.getItem("adhkar-theme")==="dark"){document.body.classList.add("dark");document.getElementById("themeToggle").textContent="☀"}</script>
+<script>if("serviceWorker" in navigator){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}))}</script>
+</body>
 </html>
