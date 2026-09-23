@@ -35,7 +35,7 @@
 <body><button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الليلي" type="button" onclick="document.body.classList.toggle('dark');localStorage.setItem('adhkar-theme',document.body.classList.contains('dark')?'dark':'light');this.textContent=document.body.classList.contains('dark')?'☀':'☾'">☾</button>
 <main class="adhkar-page"><div class="reader theme-morning">
 <div class="top"><a class="back" href="index.html">← الرئيسية</a><span id="session"></span></div>
-<div class="header"><div class="icon" id="icon"><img src="icons/icon-morning.svg" alt="" aria-hidden="true"></div><h1 id="title">أذكار الصباح</h1></div>
+<div class="header"><div class="icon custom-icon icon-morning" id="icon" aria-hidden="true"></div><h1 id="title">أذكار الصباح</h1></div>
 <div class="adhkar-nav" aria-label="التنقل بين الأذكار">
 <button class="nav-arrow" id="prevBtn" type="button" aria-label="الذكر السابق">‹</button>
 <div class="nav-center">
@@ -123,7 +123,7 @@ const sleepFadhl=[
 "دعاء من أذكار النوم الواردة عن النبي ﷺ."
 ];
 const requestedType=new URLSearchParams(location.search).get("type");const type=requestedType==="evening"||requestedType==="sleep"?requestedType:"morning";document.querySelector(".reader").classList.remove("theme-morning","theme-evening");document.querySelector(".reader").classList.add("theme-"+type);const data=type==="evening"?evening:type==="sleep"?sleep:morning;const storageKey="adhkar-progress-"+type;let savedState={};try{savedState=JSON.parse(localStorage.getItem(storageKey)||"{}")}catch(e){}let i=Number.isInteger(savedState.i)&&savedState.i>=0&&savedState.i<data.length?savedState.i:0,completed=Number.isInteger(savedState.completed)&&savedState.completed>=0?Math.min(savedState.completed,data[i][1]):0,total=0;function saveProgress(){if(i>=data.length){localStorage.removeItem(storageKey);return}localStorage.setItem(storageKey,JSON.stringify({i,completed}))}
-document.getElementById("title").textContent=type==="evening"?"أَذْكَارُ الْمَسَاءِ":type==="sleep"?"أَذْكَارُ النَّوْمِ":"أَذْكَارُ الصَّبَاحِ";document.getElementById("icon").querySelector("img").src=type==="evening"?"icons/icon-evening.svg":type==="sleep"?"icons/icon-sleep.svg":"icons/icon-morning.svg";document.getElementById("session").textContent=type==="evening"?"جلسة المساء":type==="sleep"?"جلسة النوم":"جلسة الصباح";
+document.getElementById("title").textContent=type==="evening"?"أَذْكَارُ الْمَسَاءِ":type==="sleep"?"أَذْكَارُ النَّوْمِ":"أَذْكَارُ الصَّبَاحِ";const headerIcon=document.getElementById("icon"); headerIcon.classList.remove("icon-morning","icon-evening","icon-sleep"); headerIcon.classList.add("icon-"+type);document.getElementById("session").textContent=type==="evening"?"جلسة المساء":type==="sleep"?"جلسة النوم":"جلسة الصباح";
 const fadhlMorning=[
 "",
 "الإخلاص: تحقيق التوحيد، ومعها المعوذتان تكون من أذكار التحصين، وورد أنها تكفي من قالها صباحًا ومساءً.",
