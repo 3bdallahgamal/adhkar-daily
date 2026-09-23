@@ -36,7 +36,7 @@
 }
 </style>
 </head>
-<body><button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الليلي">☾</button>
+<body><button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الليلي" type="button" onclick="document.body.classList.toggle('dark');localStorage.setItem('adhkar-theme',document.body.classList.contains('dark')?'dark':'light');this.textContent=document.body.classList.contains('dark')?'☀':'☾'">☾</button>
 <main class="tasbeeh-page">
 <section class="tasbeeh-wrap">
 <div class="tasbeeh-top"><a href="index.html">← الرئيسية</a><span>✦ أذكاري اليومية</span></div>
@@ -87,5 +87,5 @@ document.getElementById("tap").onclick=()=>{const target=dhikrs[selected].target
 document.getElementById("reset").onclick=()=>{count=0;countEl.textContent=0;done.classList.remove("show")};
 renderDhikr();
 </script>
-<script>const theme=localStorage.getItem("adhkar-theme");if(theme==="dark")document.body.classList.add("dark");const themeToggle=document.getElementById("themeToggle");themeToggle.textContent=document.body.classList.contains("dark")?"☀":"☾";themeToggle.onclick=()=>{document.body.classList.toggle("dark");const dark=document.body.classList.contains("dark");localStorage.setItem("adhkar-theme",dark?"dark":"light");themeToggle.textContent=dark?"☀":"☾"};</script></body>
+<script>if(localStorage.getItem("adhkar-theme")==="dark"){document.body.classList.add("dark");document.getElementById("themeToggle").textContent="☀"}</script></body>
 </html>
