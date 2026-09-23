@@ -36,7 +36,7 @@
 }
 </style>
 </head>
-<body>
+<body><button class="theme-toggle" id="themeToggle" aria-label="تبديل الوضع الليلي">☾</button>
 <main class="tasbeeh-page">
 <section class="tasbeeh-wrap">
 <div class="tasbeeh-top"><a href="index.html">← الرئيسية</a><span>✦ أذكاري اليومية</span></div>
@@ -87,5 +87,5 @@ document.getElementById("tap").onclick=()=>{const target=dhikrs[selected].target
 document.getElementById("reset").onclick=()=>{count=0;countEl.textContent=0;done.classList.remove("show")};
 renderDhikr();
 </script>
-</body>
+<script>const theme=localStorage.getItem("adhkar-theme");if(theme==="dark")document.body.classList.add("dark");const themeToggle=document.getElementById("themeToggle");themeToggle.textContent=document.body.classList.contains("dark")?"☀":"☾";themeToggle.onclick=()=>{document.body.classList.toggle("dark");const dark=document.body.classList.contains("dark");localStorage.setItem("adhkar-theme",dark?"dark":"light");themeToggle.textContent=dark?"☀":"☾"};</script></body>
 </html>
