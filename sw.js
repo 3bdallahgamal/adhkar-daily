@@ -1,7 +1,10 @@
-const CACHE_NAME="adhkar-daily-v25";
+const CACHE_NAME="adhkar-daily-v26";
 const ASSETS=[
   "./",
   "./index.html",
+  "./quran.html",
+  "./qibla.html",
+  "./more.html",
   "./adhkar.html",
   "./duas.html",
   "./tasbeeh.html",
