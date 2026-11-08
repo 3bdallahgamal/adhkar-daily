@@ -706,3 +706,23 @@ body.app-body{margin:0;min-height:100vh;background:#f7f8f5;color:#18384a;font-fa
  .home-screen .home-category{min-height:78px}
  .home-screen .category-icon{width:38px;height:38px}
 }
+
+
+/* Centered top bar and crisp line icons */
+.home-screen .home-app-header{
+  display:grid;
+  direction:ltr;
+  grid-template-columns:1fr auto 1fr;
+  justify-content:initial;
+}
+.home-screen .home-app-header .app-menu{grid-column:1;justify-self:start}
+.home-screen .home-app-header .app-brand{
+  grid-column:2;justify-self:center;direction:rtl;
+  display:block;text-align:center;font-size:18px;
+}
+.home-screen .home-app-header .app-search{grid-column:3;justify-self:end}
+.home-screen .category-icon svg{
+  display:block;width:23px;height:23px;
+  fill:none;stroke:currentColor;stroke-width:1.75;
+  stroke-linecap:round;stroke-linejoin:round;
+}
