@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f7f7f3">
 <title>طمأنينة | الرئيسية</title>
-<link rel="stylesheet" href="style.css?v=44">
+<link rel="stylesheet" href="style.css?v=45">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="app-icon.svg">
 </head>
@@ -22,7 +22,7 @@
     <div class="hero-label">مواقيت الصلاة · القاهرة</div>
     <div class="hero-clock" id="live-clock">--:--</div>
     <div class="hero-meta"><span id="hijri-date">التاريخ الهجري</span><span class="meta-divider"></span><span>القاهرة · مصر</span></div>
-    <div class="next-prayer-card"><span class="next-prayer-pill">الصلاة القادمة</span><div class="next-prayer-copy"><b id="next-name">--</b><span>متبقي <strong id="countdown">--:--</strong></span></div><span class="next-prayer-mark">۞</span></div>
+    <div class="next-prayer-card"><span class="next-prayer-pill" id="prayer-state-label">الصلاة الحالية</span><div class="next-prayer-copy"><b id="next-name">--</b><span class="countdown-text"><span id="prayer-remaining-label">باقي على انتهاء وقتها</span><strong id="countdown">--</strong></span></div><span class="next-prayer-mark">۞</span></div>
     </section>
   <div class="section-heading"><h2>الأذكار والأدعية</h2><span>اختر ما يناسب وقتك</span></div>
   <section class="home-categories" aria-label="الأقسام الرئيسية">
@@ -48,10 +48,30 @@
   <a href="tasbeeh.html"><span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" stroke-dasharray="1.2 2.2"/><circle cx="12" cy="3.6" r="1.1"/><circle cx="20.4" cy="12" r="1.1"/><circle cx="12" cy="20.4" r="1.1"/></svg></span>التسبيح</a>
 </nav>
 <script>
-(()=>{const $=id=>document.getElementById(id),fmt=n=>Number(n).toLocaleString('ar-EG'),clock=()=>{$('live-clock').textContent=new Intl.DateTimeFormat('ar-EG',{hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(new Date())};clock();setInterval(clock,1000);
-const names={Fajr:'الفجر',Dhuhr:'الظهر',Asr:'العصر',Maghrib:'المغرب',Isha:'العشاء'},keys=Object.keys(names);
-function tick(){const t=window.prayerData;if(!t)return;const now=new Date(),m=now.getHours()*60+now.getMinutes();let n=keys.find(k=>{const x=t[k].match(/(\d{1,2}):(\d{2})/);return x&&+x[1]*60+(+x[2])>m});let tomorrow=false;if(!n){n='Fajr';tomorrow=true}const x=t[n].match(/(\d{1,2}):(\d{2})/),target=+x[1]*60+(+x[2])+(tomorrow?1440:0),d=Math.max(0,target-m),h=Math.floor(d/60),min=d%60;$('next-name').textContent=names[n];$('countdown').textContent=(h?fmt(h)+' س ':'')+fmt(min)+' د';}
-const d=new Date(),date=[String(d.getDate()).padStart(2,'0'),String(d.getMonth()+1).padStart(2,'0'),d.getFullYear()].join('-');fetch('https://api.aladhan.com/v1/timingsByCity/'+date+'?city=Cairo&country=Egypt&method=5').then(r=>r.json()).then(j=>{const data=j.data;if(!data?.timings)throw 0;window.prayerData=data.timings;document.querySelectorAll('#prayer-times .prayer-time').forEach((el,i)=>{const key=keys[i],match=data.timings[key].match(/(\d{1,2}):(\d{2})/);el.querySelector('b').textContent=match?Number(match[1]).toLocaleString('ar-EG',{minimumIntegerDigits:2,useGrouping:false})+':'+Number(match[2]).toLocaleString('ar-EG',{minimumIntegerDigits:2,useGrouping:false}):'--:--';if(key===Object.keys(names).find(k=>{const x=data.timings[k].match(/(\d{1,2}):(\d{2})/);return x&&+x[1]*60+(+x[2])>new Date().getHours()*60+new Date().getMinutes()}))el.classList.add('next')});const h=data.date.hijri;$('hijri-date').textContent=h.weekday.ar+'، '+h.day+' '+h.month.ar+' '+h.year+' هـ';tick();setInterval(tick,30000)}).catch(()=>{$('hijri-date').textContent=new Intl.DateTimeFormat('ar-EG-u-ca-islamic-umalqura',{day:'numeric',month:'long',year:'numeric'}).format(new Date())+' هـ';});
+(()=>{const $=id=>document.getElementById(id),fmt=n=>Number(n).toLocaleString('ar-EG'),names={Fajr:'الفجر',Dhuhr:'الظهر',Asr:'العصر',Maghrib:'المغرب',Isha:'العشاء'},keys=Object.keys(names);
+const parts=()=>Object.fromEntries(new Intl.DateTimeFormat('en-GB',{timeZone:'Africa/Cairo',hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).formatToParts(new Date()).map(p=>[p.type,p.value]));
+function cairoMinutes(){const p=parts();return Number(p.hour)*60+Number(p.minute)}
+function clock(){const p=parts();$('live-clock').textContent=Number(p.hour).toLocaleString('ar-EG',{minimumIntegerDigits:2,useGrouping:false})+':'+Number(p.minute).toLocaleString('ar-EG',{minimumIntegerDigits:2,useGrouping:false})}
+function minutes(value){const m=String(value||'').match(/(\d{1,2}):(\d{2})/);return m?Number(m[1])*60+Number(m[2]):null}
+function tick(){const t=window.prayerData;if(!t)return;const now=cairoMinutes(),times=Object.fromEntries([...keys,'Sunrise','Midnight'].map(k=>[k,minutes(t[k])]));if(keys.some(k=>times[k]===null)||times.Sunrise===null)return;
+let active=null,upcoming=null,target=null;
+if(now<times.Fajr){upcoming='Fajr';target=times.Fajr}
+else if(now<times.Sunrise){active='Fajr';target=times.Sunrise}
+else if(now<times.Dhuhr){upcoming='Dhuhr';target=times.Dhuhr}
+else if(now<times.Asr){active='Dhuhr';target=times.Asr}
+else if(now<times.Maghrib){active='Asr';target=times.Maghrib}
+else if(now<times.Isha){active='Maghrib';target=times.Isha}
+else {let islamicMidnight=times.Midnight;if(islamicMidnight===null)islamicMidnight=times.Maghrib+((times.Fajr+1440-times.Maghrib)/2);if(now<islamicMidnight){active='Isha';target=islamicMidnight}else{upcoming='Fajr';target=times.Fajr+1440}}
+let left=target-now;if(left<0)left+=1440;const h=Math.floor(left/60),m=left%60;
+$('prayer-state-label').textContent=active?'الصلاة الحالية':'الصلاة القادمة';
+$('prayer-remaining-label').textContent=active?'باقي على انتهاء وقتها':'متبقي على دخولها';
+$('next-name').textContent=names[active||upcoming];
+$('countdown').textContent=(h?fmt(h)+' س ':'')+fmt(m)+' د';
+document.querySelectorAll('#prayer-times .prayer-time').forEach((el,i)=>{el.classList.remove('current','next');const k=keys[i];if(k===active)el.classList.add('current');else if(!active&&k===upcoming)el.classList.add('next')})
+}
+clock();setInterval(clock,1000);
+const now=new Date(),dateParts=new Intl.DateTimeFormat('en-GB',{timeZone:'Africa/Cairo',day:'2-digit',month:'2-digit',year:'numeric'}).formatToParts(now),date=[dateParts.find(p=>p.type==='day').value,dateParts.find(p=>p.type==='month').value,dateParts.find(p=>p.type==='year').value].join('-');
+fetch('https://api.aladhan.com/v1/timingsByCity/'+date+'?city=Cairo&country=Egypt&method=5').then(r=>r.json()).then(j=>{const data=j.data;if(!data?.timings)throw 0;window.prayerData=data.timings;document.querySelectorAll('#prayer-times .prayer-time').forEach((el,i)=>{const v=minutes(data.timings[keys[i]]);el.querySelector('b').textContent=v===null?'--':Math.floor(v/60).toLocaleString('ar-EG',{minimumIntegerDigits:2,useGrouping:false})+':'+(v%60).toLocaleString('ar-EG',{minimumIntegerDigits:2,useGrouping:false})});const h=data.date.hijri;$('hijri-date').textContent=h.weekday.ar+'، '+h.day+' '+h.month.ar+' '+h.year+' هـ';tick();setInterval(tick,15000)}).catch(()=>{$('hijri-date').textContent=new Intl.DateTimeFormat('ar-EG-u-ca-islamic-umalqura',{timeZone:'Africa/Cairo',day:'numeric',month:'long',year:'numeric'}).format(new Date())+' هـ'});
 })();
 if('serviceWorker'in navigator)addEventListener('load',()=>navigator.serviceWorker.register('./sw.js',{updateViaCache:'none'}).catch(()=>{}));
 </script>

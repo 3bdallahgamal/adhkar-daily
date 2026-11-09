@@ -1597,3 +1597,22 @@ body.app-body::before{display:none!important;content:none!important}
 .qibla-screen .qibla-degree b{color:#087d70!important}
 .qibla-screen .qibla-locate{border-radius:15px!important;background:#e5f4ef!important;color:#17384a!important;box-shadow:none!important}
 @media(max-width:370px){.home-screen .app-main{padding-right:12px!important;padding-left:12px!important}.home-screen .home-categories{gap:6px 4px!important;padding:8px 5px!important}.home-screen .home-category{min-height:72px!important}.home-screen .prayer-time{min-height:69px!important}.home-screen .prayer-time b{font-size:9px!important}}
+
+
+/* Prayer panel: Islamic calm, clear current prayer and end-of-time countdown */
+.home-screen .prayer-hero{min-height:274px!important;padding:24px 18px 18px!important;border:1px solid #b7dfd4!important;border-radius:27px!important;background:radial-gradient(ellipse at 50% 0%,#fff8d7 0%,transparent 41%),radial-gradient(circle at 8% 88%,#c7eee398 0%,transparent 38%),linear-gradient(145deg,#e3f7ef 0%,#b8e9dd 57%,#e4f6ed 100%)!important;box-shadow:0 12px 28px rgba(18,88,75,.09),inset 0 1px 0 #ffffffcc!important}
+.home-screen .prayer-hero::after{top:13px!important;inset-inline-end:19px!important;color:#c4a65e!important;font-size:24px!important;text-shadow:0 2px 8px #ffffffb0!important}
+.home-screen .hero-mosque-art{height:126px!important;color:#267e70!important;opacity:.19!important}
+.home-screen .hero-label{margin-top:4px!important;color:#527a72!important;font-size:12px!important;letter-spacing:.01em!important}
+.home-screen .hero-clock{margin:7px 0 9px!important;color:#087c70!important;font-size:clamp(57px,16vw,71px)!important;line-height:1!important;letter-spacing:-.045em!important;text-shadow:0 2px 0 #ffffff30!important}
+.home-screen .hero-meta{gap:13px!important;color:#456b68!important;font-size:11px!important}
+.home-screen .meta-divider{height:23px!important;background:#70b8a9!important;opacity:.8!important}
+.home-screen .next-prayer-card{width:min(100%,360px)!important;min-height:54px!important;margin-top:15px!important;padding:9px 16px!important;border:1px solid #c5e8df!important;border-radius:999px!important;background:rgba(255,255,255,.84)!important;box-shadow:0 4px 12px rgba(29,94,80,.05)!important}
+.home-screen .next-prayer-pill{color:#66837e!important;font-size:10px!important;font-weight:600!important}
+.home-screen .next-prayer-copy{gap:10px!important}
+.home-screen .next-prayer-copy b{color:#17384a!important;font-size:15px!important;font-weight:800!important}
+.home-screen .next-prayer-copy .countdown-text{display:flex!important;align-items:center!important;gap:5px!important;color:#70837f!important;font-size:10px!important}
+.home-screen .next-prayer-copy .countdown-text strong{color:#087d70!important;font-size:12px!important;font-weight:800!important;white-space:nowrap!important}
+.home-screen .prayer-time.current{outline:1.5px solid #55ae9c!important;background:#e4f5ef!important}
+.home-screen .prayer-time.current b{color:#087c70!important;font-weight:800!important}
+@media(max-width:370px){.home-screen .prayer-hero{min-height:258px!important;padding:19px 13px 16px!important}.home-screen .hero-clock{font-size:56px!important}.home-screen .next-prayer-card{padding-inline:11px!important}.home-screen .next-prayer-copy b{font-size:13px!important}}
