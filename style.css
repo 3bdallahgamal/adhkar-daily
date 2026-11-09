@@ -1002,3 +1002,111 @@ body.app-body{margin:0;min-height:100vh;background:#f7f8f5;color:#18384a;font-fa
  box-shadow:0 5px 13px rgba(38,68,45,.15);
 }
 .qibla-screen .qibla-sensor{color:#8c6d36}
+
+
+/* Additional details from the selected ivory-gold concept */
+.app-body:before{
+ content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.20;
+ background:
+  linear-gradient(30deg,transparent 47%,rgba(174,135,62,.13) 48%,rgba(174,135,62,.13) 49%,transparent 50%,transparent 51%,rgba(88,104,70,.07) 52%,rgba(88,104,70,.07) 53%,transparent 54%),
+  linear-gradient(150deg,transparent 47%,rgba(88,104,70,.07) 48%,rgba(88,104,70,.07) 49%,transparent 50%,transparent 51%,rgba(174,135,62,.11) 52%,rgba(174,135,62,.11) 53%,transparent 54%);
+ background-size:38px 38px;
+ mask-image:linear-gradient(to bottom,#000 0%,rgba(0,0,0,.65) 34%,transparent 72%);
+}
+.app-body .app-top,.app-body .app-main,.app-body .bottom-nav{position:relative;z-index:1}
+.app-body .bottom-nav{position:fixed}
+.app-center-header .app-brand:before{
+ content:"۞";display:block;margin:0 auto -7px;
+ color:#aa823e;font-family:serif;font-size:15px;line-height:1;
+}
+.home-screen .home-kicker{
+ position:relative;z-index:1;
+ margin:0 auto 8px;text-align:center;color:#9c7b42;
+ font-family:Cairo,Arial,sans-serif;font-size:10px;font-weight:600;
+}
+.home-screen .home-kicker span{padding:0 5px;font-size:8px;color:#b69557}
+.home-screen .prayer-hero{
+ min-height:365px;padding-top:19px;
+ border-radius:22px;
+}
+.home-screen .prayer-hero:before{
+ width:150px;height:150px;top:33px;
+ border:1px solid rgba(164,124,51,.20);
+ box-shadow:0 0 0 9px rgba(255,255,255,.20),0 0 0 21px rgba(180,146,78,.07);
+}
+.home-screen .hero-label{font-size:11px;letter-spacing:.02em}
+.home-screen .hero-clock{font-size:clamp(56px,15vw,68px);margin:13px 0 5px}
+.home-screen .hero-mosque-art{height:118px!important;opacity:.19!important}
+.home-screen .next-prayer-card{
+ width:min(100%,285px);margin-top:16px;
+ border-radius:15px;background:#fffaf1;
+}
+.home-screen .next-prayer-mark{font-family:serif}
+.home-screen .home-categories{gap:8px;padding:10px}
+.home-screen .home-category{min-height:94px;border-radius:14px}
+.home-screen .category-icon svg{width:27px;height:27px;stroke-width:1.6}
+.home-screen .home-category b{font-size:12px}
+.home-screen .prayer-schedule{padding:0 10px 11px}
+.home-screen .schedule-heading h2{font-size:15px}
+.home-screen .prayer-schedule .prayer-time{min-height:79px;border-radius:12px}
+.home-screen .prayer-schedule .prayer-time.next{
+ box-shadow:inset 0 0 0 1px #d8bd7b,0 4px 11px rgba(43,74,47,.15);
+}
+.home-screen .bottom-nav a.active,.quran-screen .bottom-nav a.active,.qibla-screen .bottom-nav a.active{
+ border:1px solid rgba(213,185,110,.65);
+ box-shadow:0 3px 9px rgba(25,59,46,.16);
+}
+.quran-screen .quran-main{padding-top:11px}
+.quran-screen .quran-intro{
+ margin:5px 0 17px;text-align:center;
+}
+.quran-screen .quran-intro svg{
+ display:block;width:30px;height:30px;margin:0 auto 4px;
+ fill:none;stroke:#a7833c;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;
+}
+.quran-screen .quran-intro h1{
+ margin:0;color:#193b2e;font-size:22px;font-weight:700;
+}
+.quran-screen .quran-intro p{
+ margin:3px 0 0;color:#a0844e;font-size:11px;
+}
+.quran-screen .quran-resume{
+ min-height:100px;position:relative;overflow:hidden;
+ padding:14px 16px;border-radius:17px;
+}
+.quran-screen .quran-resume:before,.quran-screen .quran-resume:after{
+ position:absolute;color:rgba(218,185,111,.22);font-family:serif;font-size:60px;line-height:1;
+ pointer-events:none;
+}
+.quran-screen .quran-resume:before{content:"۞";left:6px;top:8px}
+.quran-screen .quran-resume:after{content:"۞";right:7px;bottom:2px}
+.quran-screen .quran-motif{z-index:1;border:1px solid rgba(196,158,78,.55)}
+.quran-screen .quran-resume>span:nth-child(2),.quran-screen .resume-arrow{position:relative;z-index:1}
+.quran-screen .quran-tabs{margin-top:15px}
+.quran-screen .surah-number{
+ clip-path:polygon(50% 0,88% 13%,100% 50%,88% 87%,50% 100%,12% 87%,0 50%,12% 13%);
+ border:0;background:#f4ead5;box-shadow:inset 0 0 0 1px #c8a967;
+}
+.quran-screen .quran-reading h2{color:#234331}
+.qibla-screen .qibla-main{padding-top:13px}
+.qibla-screen .qibla-intro{text-align:center;margin:5px 0 0}
+.qibla-screen .kaaba-mark{
+ display:grid;place-items:center;width:34px;height:34px;margin:0 auto 4px;
+ color:#fff4d7;background:#1b4535;border:1px solid #b99756;
+ border-radius:11px;font-size:17px;box-shadow:0 3px 9px rgba(44,68,43,.16);
+}
+.qibla-screen .qibla-intro h1{margin:0;color:#193b2e;font-size:22px}
+.qibla-screen .qibla-intro p{margin:2px 0;color:#9c7b42;font-size:11px}
+.qibla-screen .qibla-compass{margin-top:17px}
+.qibla-screen .qibla-degree b{
+ position:relative;min-width:132px;padding:2px 19px 6px;
+ border:1px solid #c5a35f;border-radius:18px;
+ background:#fffaf0;box-shadow:0 3px 9px rgba(87,67,34,.08);
+}
+.qibla-screen .qibla-degree b:before,.qibla-screen .qibla-degree b:after{
+ content:"◆";position:absolute;top:50%;transform:translateY(-50%);
+ color:#ad8a48;font-size:8px;
+}
+.qibla-screen .qibla-degree b:before{left:9px}
+.qibla-screen .qibla-degree b:after{right:9px}
+.qibla-screen .qibla-locate{border:1px solid #a9874f}
