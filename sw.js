@@ -1,4 +1,4 @@
-const CACHE_NAME="adhkar-daily-v36";
+const CACHE_NAME="adhkar-daily-v42";
 const ASSETS=[
   "./",
   "./index.html",
