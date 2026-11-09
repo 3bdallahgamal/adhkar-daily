@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f7f7f3">
 <title>طمأنينة | الرئيسية</title>
-<link rel="stylesheet" href="style.css?v=40">
+<link rel="stylesheet" href="style.css?v=41">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="app-icon.svg">
 </head>
@@ -48,7 +48,7 @@
   <a href="tasbeeh.html"><span><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4" stroke-dasharray="1.2 2.2"/><circle cx="12" cy="3.6" r="1.1"/><circle cx="20.4" cy="12" r="1.1"/><circle cx="12" cy="20.4" r="1.1"/></svg></span>التسبيح</a>
 </nav>
 <script>
-(()=>{const $=id=>document.getElementById(id),fmt=n=>Number(n).toLocaleString('ar-EG'),clock=()=>{$('live-clock').textContent=new Intl.DateTimeFormat('ar-EG',{hour:'2-digit',minute:'2-digit'}).format(new Date())};clock();setInterval(clock,1000);
+(()=>{const $=id=>document.getElementById(id),fmt=n=>Number(n).toLocaleString('ar-EG'),clock=()=>{$('live-clock').textContent=new Intl.DateTimeFormat('ar-EG',{hour:'2-digit',minute:'2-digit',hourCycle:'h23'}).format(new Date())};clock();setInterval(clock,1000);
 const names={Fajr:'الفجر',Dhuhr:'الظهر',Asr:'العصر',Maghrib:'المغرب',Isha:'العشاء'},keys=Object.keys(names);
 function tick(){const t=window.prayerData;if(!t)return;const now=new Date(),m=now.getHours()*60+now.getMinutes();let n=keys.find(k=>{const x=t[k].match(/(\d{1,2}):(\d{2})/);return x&&+x[1]*60+(+x[2])>m});let tomorrow=false;if(!n){n='Fajr';tomorrow=true}const x=t[n].match(/(\d{1,2}):(\d{2})/),target=+x[1]*60+(+x[2])+(tomorrow?1440:0),d=Math.max(0,target-m),h=Math.floor(d/60),min=d%60;$('next-name').textContent=names[n];$('countdown').textContent=(h?fmt(h)+' س ':'')+fmt(min)+' د';}
 const d=new Date(),date=[String(d.getDate()).padStart(2,'0'),String(d.getMonth()+1).padStart(2,'0'),d.getFullYear()].join('-');fetch('https://api.aladhan.com/v1/timingsByCity/'+date+'?city=Cairo&country=Egypt&method=5').then(r=>r.json()).then(j=>{const data=j.data;if(!data?.timings)throw 0;window.prayerData=data.timings;document.querySelectorAll('#prayer-times .prayer-time').forEach((el,i)=>{const key=keys[i],match=data.timings[key].match(/(\d{1,2}):(\d{2})/);el.querySelector('b').textContent=match?Number(match[1]).toLocaleString('ar-EG',{minimumIntegerDigits:2,useGrouping:false})+':'+Number(match[2]).toLocaleString('ar-EG',{minimumIntegerDigits:2,useGrouping:false}):'--:--';if(key===Object.keys(names).find(k=>{const x=data.timings[k].match(/(\d{1,2}):(\d{2})/);return x&&+x[1]*60+(+x[2])>new Date().getHours()*60+new Date().getMinutes()}))el.classList.add('next')});const h=data.date.hijri;$('hijri-date').textContent=h.weekday.ar+'، '+h.day+' '+h.month.ar+' '+h.year+' هـ';tick();setInterval(tick,30000)}).catch(()=>{$('hijri-date').textContent=new Intl.DateTimeFormat('ar-EG-u-ca-islamic-umalqura',{day:'numeric',month:'long',year:'numeric'}).format(new Date())+' هـ';});
