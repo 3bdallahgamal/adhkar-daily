@@ -1144,3 +1144,129 @@ body.app-body{margin:0;min-height:100vh;background:#f7f8f5;color:#18384a;font-fa
  width:20px;height:20px;fill:none;stroke:#e5c977;stroke-width:1.5;
  stroke-linecap:round;stroke-linejoin:round;
 }
+
+
+/* Selected prayer-times concept: light mint dashboard */
+.home-screen.app-body{
+  --ink:#17384a;--teal:#078779;--mint:#def4ef;--paper:#f7f7f3;
+  background:var(--paper)!important;color:var(--ink)!important;
+}
+.home-screen .app-top{
+  position:sticky!important;top:0;z-index:35;
+  width:min(100%,440px);margin:0 auto;
+  background:rgba(250,250,247,.96)!important;
+  border-bottom:1px solid #e7eeea!important;
+  box-shadow:none!important;backdrop-filter:blur(12px);
+}
+.home-screen .app-brand{color:var(--ink)!important;font-size:18px!important;font-weight:800}
+.home-screen .top-action,.home-screen .top-action svg{color:var(--ink)!important;stroke:currentColor}
+.home-screen .app-main{
+  width:min(100%,440px)!important;margin:0 auto!important;
+  padding:14px 16px 92px!important;
+}
+.home-screen .home-kicker{display:none!important}
+.home-screen .prayer-hero{
+  min-height:0!important;height:auto!important;overflow:hidden;
+  margin:4px 0 17px!important;padding:20px 16px 16px!important;
+  border:1px solid #d5eee8!important;border-radius:22px!important;
+  background:linear-gradient(155deg,#e8f8f4 0%,#c9eee7 54%,#e7f6f2 100%)!important;
+  box-shadow:0 9px 25px rgba(20,76,70,.08)!important;text-align:center;
+}
+.home-screen .prayer-hero:before{
+  content:"";position:absolute;inset:auto 0 0;height:100px;pointer-events:none;
+  opacity:.20;background:#fff;
+  clip-path:polygon(0 82%,8% 82%,10% 46%,12% 82%,21% 82%,28% 63%,34% 32%,39% 63%,46% 82%,55% 82%,63% 51%,66% 82%,74% 82%,82% 61%,88% 82%,93% 82%,95% 42%,97% 82%,100% 82%,100% 100%,0 100%);
+}
+.home-screen .hero-mosque-art{display:none!important}
+.home-screen .prayer-hero:after{display:none!important}
+.home-screen .hero-label{
+  position:relative;z-index:1;text-align:center;font-size:11px!important;
+  color:#527a75!important;letter-spacing:.02em;
+}
+.home-screen .hero-clock{
+  position:relative;z-index:1;margin:5px 0 7px!important;
+  color:#087c70!important;font-size:clamp(56px,15vw,68px)!important;
+  font-weight:750;letter-spacing:1px;line-height:1.05!important;
+}
+.home-screen .hero-meta{
+  position:relative;z-index:1;display:flex!important;justify-content:center;
+  gap:12px!important;color:#234852!important;font-size:11px!important;
+}
+.home-screen .hero-meta .meta-divider{height:24px;width:1px;background:#8ac6ba}
+.home-screen .next-prayer-card{
+  position:relative;z-index:1;display:flex!important;align-items:center;
+  justify-content:center;gap:7px;margin:11px auto 0!important;padding:7px 11px!important;
+  width:max-content;max-width:100%;border:1px solid #c5e7df!important;
+  border-radius:999px!important;background:rgba(255,255,255,.58)!important;
+  box-shadow:none!important;color:#19484a!important;
+}
+.home-screen .next-prayer-pill{font-size:9px!important;color:#65827d!important}
+.home-screen .next-prayer-copy{display:flex;align-items:center;gap:7px}
+.home-screen .next-prayer-copy b{font-size:11px!important;color:#153e49!important}
+.home-screen .next-prayer-copy span{font-size:10px!important;color:#416a66!important}
+.home-screen .next-prayer-mark{display:none!important}
+.home-screen .section-heading{
+  display:flex;align-items:center;justify-content:space-between;
+  margin:17px 2px 9px!important;
+}
+.home-screen .section-heading h2{
+  margin:0!important;font-size:16px!important;font-weight:800!important;color:#17384a!important;
+}
+.home-screen .section-heading>span{font-size:10px!important;color:#7a8e89!important}
+.home-screen .home-categories{
+  display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;
+  gap:4px 2px!important;padding:10px 6px!important;margin:0 0 17px!important;
+  border:1px solid #e4f0eb!important;border-radius:20px!important;
+  background:#edf6f2!important;box-shadow:none!important;
+}
+.home-screen .home-category{
+  min-height:78px!important;padding:7px 3px!important;gap:5px!important;
+  border:0!important;border-radius:14px!important;background:transparent!important;
+  box-shadow:none!important;transform:none;
+}
+.home-screen .home-category:active{background:#dff0e9!important}
+.home-screen .category-icon{
+  width:36px!important;height:36px!important;border-radius:12px!important;
+  background:transparent!important;color:#168679!important;font-size:22px!important;
+}
+.home-screen .category-icon svg{width:26px!important;height:26px!important}
+.home-screen .home-category b{
+  font-size:11px!important;line-height:1.35!important;color:#17384a!important;white-space:normal!important;
+}
+.home-screen .prayer-schedule{margin-top:0!important}
+.home-screen .schedule-heading{margin:12px 2px 9px!important}
+.home-screen .prayer-times{
+  display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;
+  gap:6px!important;margin:0!important;
+}
+.home-screen .prayer-time{
+  min-height:70px!important;padding:8px 2px!important;border-radius:13px!important;
+  border:1px solid #e6efeb!important;background:#eef6f2!important;
+  box-shadow:none!important;color:#17384a!important;
+}
+.home-screen .prayer-time i{font-size:16px!important}
+.home-screen .prayer-time span{font-size:9px!important;color:#536d70!important}
+.home-screen .prayer-time b{font-size:10px!important;color:#17384a!important}
+.home-screen .prayer-time.next{outline:1px solid #63b8a7!important;background:#e1f4ef!important}
+.home-screen .bottom-nav{
+  position:fixed!important;left:0!important;right:0!important;bottom:0!important;
+  width:min(100%,440px)!important;margin:0 auto!important;transform:none!important;
+  padding:6px 6px max(8px,env(safe-area-inset-bottom))!important;
+  border:0!important;border-top:1px solid #e5ece8!important;border-radius:0!important;
+  background:rgba(250,250,247,.97)!important;box-shadow:0 -6px 20px rgba(20,55,66,.06)!important;
+  backdrop-filter:blur(16px);
+}
+.home-screen .bottom-nav a{color:#7a8987!important;font-size:9px!important}
+.home-screen .bottom-nav a span{color:#7a8987!important}
+.home-screen .bottom-nav a.active,.home-screen .bottom-nav a.active span{
+  color:#087c70!important;
+}
+@media(max-width:380px){
+  .home-screen .app-main{padding-inline:12px!important}
+  .home-screen .prayer-hero{padding:18px 11px 14px!important}
+  .home-screen .hero-clock{font-size:54px!important}
+  .home-screen .home-categories{padding:8px 3px!important}
+  .home-screen .home-category{min-height:72px!important}
+  .home-screen .prayer-times{gap:4px!important}
+  .home-screen .prayer-time b{font-size:9px!important}
+}
