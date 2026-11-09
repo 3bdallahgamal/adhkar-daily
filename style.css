@@ -1511,3 +1511,21 @@ body.app-body::before{display:none!important;content:none!important;background:n
  .qibla-screen .qibla-compass{width:68vw!important;height:68vw!important}
  .reader,.duas-reader,.tasbeeh-wrap{width:100%!important}
 }
+
+
+/* Finishing details for consistent Quran and Qibla screens */
+.quran-screen .page-note{order:2!important;margin:0!important;padding:9px 12px!important;
+ border:1px solid #e6eee8!important;border-radius:12px!important;background:#fff!important;
+ color:#758983!important;font-size:10px!important;text-align:center!important}
+.quran-screen .quran-intro{order:3!important;width:100%!important;justify-content:flex-start!important}
+.quran-screen .quran-intro svg,.quran-screen .quran-intro p{display:none!important}
+.quran-screen .quran-intro h1{font-family:Cairo,Arial,sans-serif!important;font-size:18px!important;font-weight:800!important}
+.quran-screen .quran-tabs{order:4!important}
+.quran-screen .surah-list{order:5!important}
+.qibla-screen .qibla-degree b{
+ min-width:0!important;padding:0!important;border:0!important;border-radius:0!important;
+ background:transparent!important;box-shadow:none!important;
+}
+.qibla-screen .qibla-degree b:before,.qibla-screen .qibla-degree b:after{display:none!important}
+.qibla-screen .needle{border-bottom-color:#078779!important;filter:none!important}
+.qibla-screen .qibla-compass:after{background:#fff!important;box-shadow:inset 0 0 0 1px #edf5f2!important}

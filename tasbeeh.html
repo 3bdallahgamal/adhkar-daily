@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>المسبحة الإلكترونية | أذكاري اليومية</title>
-<link rel="stylesheet" href="style.css?v=42">
+<link rel="stylesheet" href="style.css?v=43">
 <style>
 .tasbeeh-page{min-height:100svh;padding:12px 14px 20px;background:#e9e1cf;color:#173c31;position:relative;overflow:hidden;display:flex;align-items:flex-start}
 .tasbeeh-page::before{content:"";position:absolute;inset:0;opacity:.22;background-image:radial-gradient(circle at center,transparent 0 42px,rgba(151,113,48,.18) 43px 44px,transparent 45px),radial-gradient(circle at center,transparent 0 20px,rgba(151,113,48,.12) 21px 22px,transparent 23px);background-size:84px 84px;transform:rotate(45deg);pointer-events:none}
@@ -123,6 +123,23 @@
  .mihrab-ornament{width:168px;height:55px;top:8px}
  .mihrab-ornament + .tasbeeh-card{padding-top:44px!important}
 }
+</style><style>
+
+.tasbeeh-page:not(#ui-root){background:#f7f7f3!important;background-image:none!important;color:#17384a!important}
+.tasbeeh-page:not(#ui-root)::before{display:none!important}
+.tasbeeh-page:not(#ui-root) .tasbeeh-wrap{width:min(100%,440px)!important;margin:8px auto 0!important}
+.tasbeeh-page:not(#ui-root) .tasbeeh-top,.tasbeeh-page:not(#ui-root) .tasbeeh-header p{color:#687f7b!important}
+.tasbeeh-page:not(#ui-root) .tasbeeh-top a,.tasbeeh-page:not(#ui-root) .reset{color:#087c70!important}
+.tasbeeh-page:not(#ui-root) .tasbeeh-header h1{color:#17384a!important}
+.tasbeeh-page:not(#ui-root) .tasbeeh-card{background:#fff!important;border:1px solid #e1ece7!important;border-radius:26px!important;box-shadow:0 8px 24px rgba(23,56,74,.06)!important}
+.tasbeeh-page:not(#ui-root) .tasbeeh-card::before,.tasbeeh-page:not(#ui-root) .tasbeeh-card::after{display:none!important}
+.tasbeeh-page:not(#ui-root) .dhikr-option{background:#edf6f2!important;border-color:#e0ece7!important;color:#526f6a!important}
+.tasbeeh-page:not(#ui-root) .dhikr-option.active{background:#bfece3!important;color:#17384a!important}
+.tasbeeh-page:not(#ui-root) .zikr-name,.tasbeeh-page:not(#ui-root) .target{color:#17384a!important}
+.tasbeeh-page:not(#ui-root) .count{color:#087c70!important}
+.tasbeeh-page:not(#ui-root) .tap-circle{background:#078779!important;border-color:#d1eee6!important;box-shadow:0 8px 22px rgba(8,124,112,.16)!important}
+.tasbeeh-page:not(#ui-root) .fadhl-title{color:#087c70!important}
+
 </style></head>
 <body>
 <main class="tasbeeh-page">

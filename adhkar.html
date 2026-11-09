@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>الأذكار</title>
-<link rel="stylesheet" href="style.css?v=42">
+<link rel="stylesheet" href="style.css?v=43">
 <style>
 .adhkar-page{min-height:100svh;padding:12px 14px 20px;background:#e9e1cf;color:#173c31;position:relative;overflow:hidden;display:flex;align-items:flex-start}
 .adhkar-page::before{content:"";position:absolute;inset:0;opacity:.22;background-image:radial-gradient(circle at center,transparent 0 42px,rgba(151,113,48,.18) 43px 44px,transparent 45px),radial-gradient(circle at center,transparent 0 20px,rgba(151,113,48,.12) 21px 22px,transparent 23px);background-size:84px 84px;transform:rotate(45deg);pointer-events:none}
@@ -186,6 +186,26 @@
   }
 }
 .zikr.quran .bismillah{font-size:.62em;color:#967238;margin-bottom:14px;font-weight:700;display:block;width:100%;text-align:center;line-height:1.4}.zikr.quran .istiadhah{font-size:.62em;color:#967238;margin-bottom:14px;font-weight:700;display:block;width:100%;text-align:center;line-height:1.4}
+</style><style>
+
+.adhkar-page:not(#ui-root){background:#f7f7f3!important;background-image:none!important;color:#17384a!important}
+.adhkar-page:not(#ui-root)::before{display:none!important}
+.adhkar-page:not(#ui-root) .reader{width:min(100%,440px)!important;margin:8px auto 0!important}
+.adhkar-page:not(#ui-root) .top{color:#687f7b!important}
+.adhkar-page:not(#ui-root) .back{color:#087c70!important}
+.adhkar-page:not(#ui-root) .header h1{color:#17384a!important}
+.adhkar-page:not(#ui-root) .adhkar-nav{background:#edf6f2!important;border:1px solid #e0ece7!important;border-radius:16px!important}
+.adhkar-page:not(#ui-root) .nav-arrow{color:#087c70!important}
+.adhkar-page:not(#ui-root) .card,
+.adhkar-page:not(#ui-root):has(.reader) .card{background:#fff!important;border:1px solid #e1ece7!important;border-radius:26px!important;box-shadow:0 8px 24px rgba(23,56,74,.06)!important}
+.adhkar-page:not(#ui-root) .card::before,.adhkar-page:not(#ui-root) .card::after{display:none!important}
+.adhkar-page:not(#ui-root) .zikr{color:#17384a!important}
+.adhkar-page:not(#ui-root) .counter-area{border-color:#e1ece7!important}
+.adhkar-page:not(#ui-root) .count-number{background:#e6f4ef!important;color:#087c70!important;box-shadow:0 6px 18px rgba(23,56,74,.08),inset 0 0 0 1px #cde7de!important}
+.adhkar-page:not(#ui-root) .count-number .counter-value{color:#087c70!important}
+.adhkar-page:not(#ui-root) .progress{background:#0a8b7d!important}
+.adhkar-page:not(#ui-root) .fadhl-title{color:#087c70!important}
+
 </style></head>
 <body>
 <main class="adhkar-page"><div class="reader theme-morning">
