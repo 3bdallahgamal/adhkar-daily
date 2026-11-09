@@ -1529,3 +1529,71 @@ body.app-body::before{display:none!important;content:none!important;background:n
 .qibla-screen .qibla-degree b:before,.qibla-screen .qibla-degree b:after{display:none!important}
 .qibla-screen .needle{border-bottom-color:#078779!important;filter:none!important}
 .qibla-screen .qibla-compass:after{background:#fff!important;box-shadow:inset 0 0 0 1px #edf5f2!important}
+
+
+/* Tumanina UI refresh: a calm prayer dashboard and consistent mobile app frame */
+:root{--ui-bg:#f6f7f3;--ui-surface:#fff;--ui-ink:#17384a;--ui-muted:#778b8a;--ui-teal:#0a8276;--ui-mint:#dff3ee;--ui-line:#e3ece8;--ui-shadow:0 8px 24px rgba(19,57,69,.07)}
+body.app-body{background:var(--ui-bg)!important;color:var(--ui-ink)!important;font-family:Cairo,Tahoma,Arial,sans-serif!important}
+body.app-body::before{display:none!important;content:none!important}
+.app-body .app-top{position:sticky!important;top:0!important;z-index:40!important;width:min(100%,480px)!important;height:58px!important;margin:0 auto!important;padding:0 17px!important;background:rgba(255,255,255,.94)!important;border:0!important;border-bottom:1px solid var(--ui-line)!important;border-radius:0!important;box-shadow:none!important;backdrop-filter:blur(14px)!important}
+.app-body .app-brand{color:var(--ui-ink)!important;font-size:18px!important;letter-spacing:0!important}
+.app-body .top-action{width:40px!important;height:40px!important;color:#244b58!important;background:transparent!important;border:0!important;border-radius:13px!important;box-shadow:none!important}
+.app-body .app-main{width:min(100%,480px)!important;margin:0 auto!important;padding:12px 17px 98px!important}
+.home-screen .home-kicker{margin:2px 0 10px!important;color:#718b88!important;font-size:10px!important;letter-spacing:.02em!important}
+.home-screen .prayer-hero{position:relative!important;display:flex!important;min-height:264px!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:5px!important;margin:0 0 16px!important;padding:22px 17px 17px!important;overflow:hidden!important;border:1px solid #bfe6dd!important;border-radius:23px!important;background:radial-gradient(ellipse at 50% 0%,#fff9d4 0,transparent 39%),linear-gradient(145deg,#dff6ef 0%,#bcece2 55%,#e7f8f0 100%)!important;box-shadow:var(--ui-shadow)!important}
+.home-screen .prayer-hero::after{content:"☾"!important;position:absolute!important;top:12px!important;inset-inline-end:18px!important;color:#fff!important;font-size:29px!important;opacity:.85!important;pointer-events:none!important}
+.home-screen .prayer-hero::before{content:""!important;position:absolute!important;inset:auto 0 0!important;height:104px!important;border:0!important;border-radius:0!important;background:linear-gradient(0deg,#81cfc02c,transparent)!important;pointer-events:none!important}
+.home-screen .hero-mosque-art{height:112px!important;opacity:.16!important;color:#137f73!important}
+.home-screen .hero-label,.home-screen .hero-clock,.home-screen .hero-meta,.home-screen .next-prayer-card{position:relative!important;z-index:1!important;flex:none!important}
+.home-screen .hero-label{color:#47766f!important;font-size:11px!important;font-weight:700!important}
+.home-screen .hero-clock{margin:1px 0 5px!important;color:#087d70!important;font-size:clamp(53px,15vw,66px)!important;font-weight:700!important;line-height:1.04!important;letter-spacing:-.045em!important;font-variant-numeric:tabular-nums!important}
+.home-screen .hero-meta{display:flex!important;align-items:center!important;justify-content:center!important;gap:11px!important;width:100%!important;color:#345c5d!important;font-size:10px!important}
+.home-screen .meta-divider{height:19px!important;width:1px!important;background:#7ab6a9!important}
+.home-screen .next-prayer-card{display:flex!important;align-items:center!important;justify-content:space-between!important;gap:10px!important;width:min(100%,275px)!important;min-height:39px!important;margin:6px 0 0!important;padding:7px 11px!important;border:1px solid #c8e9df!important;border-radius:99px!important;background:#ffffffc9!important;box-shadow:none!important}
+.home-screen .next-prayer-pill{position:static!important;display:inline!important;width:auto!important;height:auto!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;color:#66837e!important;font-size:9px!important;white-space:nowrap!important;box-shadow:none!important;transform:none!important}
+.home-screen .next-prayer-copy{display:flex!important;align-items:center!important;gap:8px!important;width:auto!important;height:auto!important;white-space:nowrap!important}
+.home-screen .next-prayer-copy b{position:static!important;color:#17384a!important;font-size:11px!important}
+.home-screen .next-prayer-copy span{position:static!important;color:#607d78!important;font-size:9px!important}
+.home-screen .next-prayer-copy strong{color:#078779!important}
+.home-screen .next-prayer-mark{color:#bd9c51!important;font-size:16px!important}
+.home-screen .section-heading{display:flex!important;align-items:baseline!important;justify-content:space-between!important;margin:17px 2px 10px!important}
+.home-screen .section-heading h2{margin:0!important;color:#17384a!important;font-size:16px!important;font-weight:800!important}
+.home-screen .section-heading>span{color:#879896!important;font-size:10px!important}
+.home-screen .home-categories{display:grid!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:8px 7px!important;min-height:0!important;margin:0!important;padding:11px 8px!important;border:1px solid #e2eeea!important;border-radius:19px!important;background:linear-gradient(135deg,#edf7f2,#f8fbf7)!important;box-shadow:none!important}
+.home-screen .home-category{display:flex!important;min-width:0!important;min-height:78px!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:5px!important;padding:6px 2px!important;border:0!important;border-radius:14px!important;background:transparent!important;color:#17384a!important;box-shadow:none!important;text-align:center!important}
+.home-screen .home-category:active{background:#e3f1eb!important;transform:scale(.97)!important}
+.home-screen .category-icon{display:grid!important;place-items:center!important;width:38px!important;height:38px!important;margin:0!important;border:0!important;border-radius:13px!important;background:#ffffff!important;color:#087c70!important;box-shadow:0 3px 10px rgba(23,56,74,.06)!important}
+.home-screen .category-icon svg{width:22px!important;height:22px!important}
+.home-screen .evening-category .category-icon{background:#eee9fb!important;color:#8062ad!important}
+.home-screen .morning-category .category-icon{background:#fff1d3!important;color:#d69a1b!important}
+.home-screen .sleep-category .category-icon{background:#edeafa!important;color:#7666a9!important}
+.home-screen .ruqyah-category .category-icon{background:#e4f1e8!important;color:#438262!important}
+.home-screen .dua-category .category-icon{background:#ffede6!important;color:#cc795e!important}
+.home-screen .other-category .category-icon{background:#dff2ee!important;color:#148176!important}
+.home-screen .home-category b{max-width:100%!important;overflow:hidden!important;color:#233f4b!important;font-size:10px!important;font-weight:700!important;line-height:1.35!important;text-overflow:ellipsis!important;white-space:nowrap!important}
+.home-screen .prayer-schedule{margin:15px 0 0!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important}
+.home-screen .schedule-heading{margin:0 2px 9px!important}
+.home-screen .prayer-times{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr))!important;gap:6px!important;margin:0!important}
+.home-screen .prayer-time{display:flex!important;min-width:0!important;min-height:76px!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:3px!important;padding:7px 2px!important;border:1px solid #e5eee9!important;border-radius:13px!important;background:#fff!important;color:#17384a!important;box-shadow:none!important}
+.home-screen .prayer-time i{margin:0!important;font-size:16px!important;font-style:normal!important}
+.home-screen .prayer-time span{color:#708580!important;font-size:9px!important}
+.home-screen .prayer-time b{color:#17384a!important;font-size:10px!important;font-variant-numeric:tabular-nums!important}
+.home-screen .prayer-time.next{outline:1.5px solid #81c8b8!important;background:#e6f6f0!important}
+.app-body .bottom-nav{position:fixed!important;z-index:50!important;right:0!important;bottom:0!important;left:0!important;display:flex!important;width:min(100%,480px)!important;margin:0 auto!important;padding:6px 7px max(8px,env(safe-area-inset-bottom))!important;border:0!important;border-top:1px solid #e4ece8!important;border-radius:0!important;background:rgba(255,255,255,.96)!important;box-shadow:0 -5px 18px rgba(20,55,66,.045)!important;backdrop-filter:blur(14px)!important;transform:none!important}
+.app-body .bottom-nav a,.app-body .bottom-nav a.active{display:flex!important;min-width:0!important;min-height:48px!important;flex:1!important;flex-direction:column!important;align-items:center!important;justify-content:center!important;gap:3px!important;padding:2px!important;border:0!important;border-radius:0!important;background:transparent!important;color:#84928f!important;font-size:9px!important;font-weight:600!important;box-shadow:none!important}
+.app-body .bottom-nav a span{display:grid!important;place-items:center!important;width:25px!important;height:24px!important;background:transparent!important;color:inherit!important}
+.app-body .bottom-nav a svg{width:21px!important;height:21px!important}
+.app-body .bottom-nav a.active,.app-body .bottom-nav a.active span{color:#078779!important}
+.app-body .bottom-nav a.active{font-weight:800!important}
+.app-body.quran-screen .app-main,.app-body.qibla-screen .app-main{min-height:calc(100svh - 108px)!important}
+.quran-screen .quran-intro h1,.qibla-screen .qibla-intro h1{color:#17384a!important}
+.quran-screen .quran-intro p,.qibla-screen .qibla-intro p{color:#778b8a!important}
+.quran-screen .quran-resume{border:1px solid #cfe9e1!important;border-radius:19px!important;background:linear-gradient(135deg,#e0f5ed,#c4eee5)!important;box-shadow:var(--ui-shadow)!important}
+.quran-screen .quran-tabs{border:1px solid #e2eeea!important;border-radius:15px!important;background:#edf6f2!important}
+.quran-screen .quran-tabs button.selected{border-radius:11px!important;background:#bce9df!important;color:#17384a!important}
+.quran-screen .surah-row{border-bottom:1px solid #e7eeea!important;box-shadow:none!important}
+.quran-screen .surah-number{background:#e2f3ee!important;color:#167a70!important}
+.qibla-screen .qibla-compass{border:2px solid #bfe4db!important;background:#fff!important;box-shadow:none!important}
+.qibla-screen .qibla-degree b{color:#087d70!important}
+.qibla-screen .qibla-locate{border-radius:15px!important;background:#e5f4ef!important;color:#17384a!important;box-shadow:none!important}
+@media(max-width:370px){.home-screen .app-main{padding-right:12px!important;padding-left:12px!important}.home-screen .home-categories{gap:6px 4px!important;padding:8px 5px!important}.home-screen .home-category{min-height:72px!important}.home-screen .prayer-time{min-height:69px!important}.home-screen .prayer-time b{font-size:9px!important}}
