@@ -1368,3 +1368,13 @@ body.app-body{margin:0;min-height:100vh;background:#f7f8f5;color:#18384a;font-fa
 .home-screen .prayer-time i{font-size:18px!important;margin-bottom:2px}
 .home-screen .prayer-time span{font-size:10px!important}
 .home-screen .prayer-time b{font-size:11px!important}
+
+
+/* Quiet ivory canvas and fill the mobile screen like the reference */
+body.app-body::before{display:none!important;content:none!important;background:none!important}
+body.home-screen.app-body{background:#f7f7f3!important}
+.home-screen .prayer-hero{min-height:300px!important}
+.home-screen .home-categories{min-height:230px!important}
+.home-screen .home-category{min-height:94px!important}
+.home-screen .prayer-time{min-height:90px!important}
+.home-screen .schedule-heading{margin-top:23px!important}
