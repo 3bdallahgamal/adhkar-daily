@@ -1378,3 +1378,19 @@ body.home-screen.app-body{background:#f7f7f3!important}
 .home-screen .home-category{min-height:94px!important}
 .home-screen .prayer-time{min-height:90px!important}
 .home-screen .schedule-heading{margin-top:23px!important}
+
+
+/* Simplify the dashboard hierarchy to match the reference */
+.home-screen .app-main>.section-heading:not(.schedule-heading){display:none!important}
+.home-screen .home-categories{margin-top:18px!important}
+.home-screen .hero-label{font-size:13px!important}
+.home-screen .hero-clock{font-size:clamp(58px,15vw,66px)!important}
+.home-screen .hero-meta{font-size:12px!important}
+.home-screen .next-prayer-pill{font-size:11px!important}
+.home-screen .next-prayer-copy b{font-size:12px!important}
+.home-screen .next-prayer-copy span{font-size:11px!important}
+.home-screen .home-category b{font-size:13px!important}
+.home-screen .section-heading h2{font-size:18px!important}
+.home-screen .section-heading>span{font-size:12px!important}
+.home-screen .prayer-time span{font-size:11px!important}
+.home-screen .prayer-time b{font-size:12px!important}
