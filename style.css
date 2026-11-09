@@ -821,3 +821,11 @@ body.app-body{margin:0;min-height:100vh;background:#f7f8f5;color:#18384a;font-fa
  color:#fff;opacity:.45;pointer-events:none;
 }
 .home-screen .hero-clock{position:relative;z-index:1}
+
+
+/* Clear compass graduation marks */
+.qibla-screen .qibla-compass:before{
+ background:repeating-conic-gradient(from 0deg,transparent 0deg 4deg,#78a99e 4deg 4.45deg,transparent 4.45deg 15deg);
+ -webkit-mask:radial-gradient(circle,transparent 0 72%,#000 73% 76%,transparent 77%);
+ mask:radial-gradient(circle,transparent 0 72%,#000 73% 76%,transparent 77%);
+}
