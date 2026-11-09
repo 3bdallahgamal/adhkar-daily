@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="theme-color" content="#f6f8f5">
 <title>طمأنينة | الرئيسية</title>
-<link rel="stylesheet" href="style.css?v=28">
+<link rel="stylesheet" href="style.css?v=29">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="app-icon.svg">
 </head>
@@ -20,12 +20,7 @@
     <div class="hero-label">مواقيت الصلاة · القاهرة</div>
     <div class="hero-clock" id="live-clock">--:--</div>
     <div class="hero-meta"><span id="hijri-date">التاريخ الهجري</span><span class="meta-divider"></span><span>الصلاة القادمة <b id="next-name">--</b><strong id="countdown">--:--</strong></span></div>
-    <div class="prayer-times-title">مواقيت الصلاة اليوم</div>
-    <div class="prayer-times" id="prayer-times" aria-label="مواقيت الصلاة">
-      <div class="prayer-time"><i>🌅</i><span>الفجر</span><b>--:--</b></div><div class="prayer-time"><i>☀️</i><span>الظهر</span><b>--:--</b></div><div class="prayer-time"><i>🌤️</i><span>العصر</span><b>--:--</b></div><div class="prayer-time"><i>🌇</i><span>المغرب</span><b>--:--</b></div><div class="prayer-time"><i>🌙</i><span>العشاء</span><b>--:--</b></div>
-    </div>
-  </section>
-
+    </section>
   <div class="section-heading"><h2>الأذكار والأدعية</h2><span>اختر ما يناسب وقتك</span></div>
   <section class="home-categories" aria-label="الأقسام الرئيسية">
     <a class="home-category evening-category" href="adhkar.html?type=evening"><span class="category-icon"><svg fill="none" stroke="#7859a8" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.2 15.1A8.4 8.4 0 0 1 8.9 3.8 8.5 8.5 0 1 0 20.2 15.1Z"/></svg></span><b>أذكار المساء</b></a>
@@ -36,10 +31,12 @@
     <a class="home-category other-category" href="more.html"><span class="category-icon"><svg fill="none" stroke="#148176" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6" height="6" rx="1"/><rect x="14" y="4" width="6" height="6" rx="1"/><rect x="4" y="14" width="6" height="6" rx="1"/><rect x="14" y="14" width="6" height="6" rx="1"/></svg></span><b>أقسام أخرى</b></a>
   </section>
 
-  <a class="last-read-card" href="quran.html">
-    <span class="last-read-art" aria-hidden="true">۞</span><span class="last-read-copy"><small>آخر قراءة</small><b>سورة الفاتحة</b><span>تابع تلاوتك من حيث توقفت</span></span><span class="last-read-arrow">←</span>
-  </a>
-  <p class="home-quote">﴿ أَلَا بِذِكْرِ اللَّهِ تَطْمَئِنُّ الْقُلُوبُ ﴾</p>
+  <section class="prayer-schedule" aria-label="مواقيت الصلاة">
+    <div class="section-heading schedule-heading"><h2>مواقيت الصلاة</h2><span>القاهرة</span></div>
+    <div class="prayer-times" id="prayer-times">
+      <div class="prayer-time"><i>🌅</i><span>الفجر</span><b>--:--</b></div><div class="prayer-time"><i>☀️</i><span>الظهر</span><b>--:--</b></div><div class="prayer-time"><i>🌤️</i><span>العصر</span><b>--:--</b></div><div class="prayer-time"><i>🌇</i><span>المغرب</span><b>--:--</b></div><div class="prayer-time"><i>🌙</i><span>العشاء</span><b>--:--</b></div>
+    </div>
+  </section>
 </main>
 <nav class="bottom-nav" aria-label="التنقل الرئيسي">
   <a class="active" href="index.html"><span>⌂</span>الرئيسية</a>
