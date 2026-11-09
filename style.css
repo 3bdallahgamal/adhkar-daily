@@ -1327,3 +1327,44 @@ body.app-body{margin:0;min-height:100vh;background:#f7f8f5;color:#18384a;font-fa
 .home-screen .category-icon{width:40px!important;height:40px!important}
 .home-screen .category-icon svg{width:28px!important;height:28px!important}
 .home-screen .home-category b{font-size:12px!important}
+
+
+/* Spacing and color calibration from the selected mobile reference */
+.home-screen .prayer-hero{
+  min-height:270px!important;box-sizing:border-box!important;
+  display:flex!important;flex-direction:column!important;align-items:center!important;
+  justify-content:center!important;gap:4px!important;
+  padding:22px 16px 20px!important;
+  background:linear-gradient(145deg,#d7f3ec 0%,#b8e9df 52%,#e5f7f2 100%)!important;
+}
+.home-screen .prayer-hero:before{height:125px!important;opacity:.36!important}
+.home-screen .prayer-hero:after{
+  display:block!important;content:"☾"!important;position:absolute!important;
+  inset-inline-end:21px!important;top:14px!important;z-index:1!important;
+  color:rgba(255,255,255,.88)!important;font-family:serif!important;
+  font-size:34px!important;line-height:1!important;
+  background:none!important;opacity:1!important;pointer-events:none!important;
+}
+.home-screen .hero-label,.home-screen .hero-clock,.home-screen .hero-meta,
+.home-screen .next-prayer-card{flex:0 0 auto}
+.home-screen .hero-clock{font-size:clamp(62px,16vw,74px)!important;margin:5px 0 8px!important}
+.home-screen .hero-meta{width:100%!important;min-height:30px!important}
+.home-screen .home-categories{
+  min-height:214px!important;box-sizing:border-box!important;
+  padding:13px 8px!important;gap:8px 3px!important;
+}
+.home-screen .home-category{min-height:88px!important}
+.home-screen .category-icon{width:44px!important;height:44px!important}
+.home-screen .category-icon svg{width:30px!important;height:30px!important}
+.home-screen .evening-category .category-icon svg{stroke:#8d67cb!important}
+.home-screen .morning-category .category-icon svg{stroke:#e5a921!important}
+.home-screen .sleep-category .category-icon svg{stroke:#706bb7!important}
+.home-screen .ruqyah-category .category-icon svg{stroke:#428461!important}
+.home-screen .dua-category .category-icon svg{stroke:#e47758!important}
+.home-screen .other-category .category-icon svg{stroke:#318f83!important}
+.home-screen .home-category b{font-size:12px!important}
+.home-screen .schedule-heading{margin:19px 2px 11px!important}
+.home-screen .prayer-time{min-height:86px!important;padding:10px 3px!important}
+.home-screen .prayer-time i{font-size:18px!important;margin-bottom:2px}
+.home-screen .prayer-time span{font-size:10px!important}
+.home-screen .prayer-time b{font-size:11px!important}
