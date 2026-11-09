@@ -1270,3 +1270,60 @@ body.app-body{margin:0;min-height:100vh;background:#f7f8f5;color:#18384a;font-fa
   .home-screen .prayer-times{gap:4px!important}
   .home-screen .prayer-time b{font-size:9px!important}
 }
+
+
+/* Final layout conflict fixes for the selected home design */
+.home-screen .top-action{
+  background:transparent!important;border:0!important;box-shadow:none!important;
+  border-radius:50%!important;color:#17384a!important;
+}
+.home-screen .next-prayer-card{
+  display:flex!important;flex-direction:row!important;flex-wrap:nowrap!important;
+  align-items:center!important;justify-content:center!important;
+  width:max-content!important;max-width:100%!important;min-height:0!important;
+  height:auto!important;gap:8px!important;padding:7px 13px!important;
+  overflow:visible!important;border:1px solid #c5e7df!important;
+  border-radius:999px!important;background:rgba(255,255,255,.62)!important;
+}
+.home-screen .next-prayer-pill{
+  position:static!important;inset:auto!important;display:inline!important;
+  width:auto!important;height:auto!important;max-width:none!important;
+  margin:0!important;padding:0!important;border:0!important;border-radius:0!important;
+  background:transparent!important;box-shadow:none!important;transform:none!important;
+  color:#63827d!important;font-size:10px!important;line-height:1.4!important;
+  white-space:nowrap!important;
+}
+.home-screen .next-prayer-copy{
+  display:flex!important;flex-direction:row!important;align-items:center!important;
+  width:auto!important;height:auto!important;gap:6px!important;
+  overflow:visible!important;white-space:nowrap!important;
+}
+.home-screen .next-prayer-copy b{
+  display:inline!important;position:static!important;max-width:none!important;
+  color:#173e49!important;font-size:11px!important;line-height:1.4!important;
+}
+.home-screen .next-prayer-copy span{
+  display:inline!important;position:static!important;color:#4b706d!important;
+  font-size:10px!important;line-height:1.4!important;white-space:nowrap!important;
+}
+.home-screen .next-prayer-copy strong{font-size:inherit!important;color:#087c70!important}
+.home-screen .prayer-schedule{
+  margin:0!important;padding:0!important;border:0!important;border-radius:0!important;
+  background:transparent!important;box-shadow:none!important;
+}
+.home-screen .schedule-heading{margin:14px 2px 9px!important}
+.home-screen .bottom-nav a{
+  background:transparent!important;border:0!important;border-radius:0!important;
+  box-shadow:none!important;min-height:48px!important;
+}
+.home-screen .bottom-nav a.active{
+  background:transparent!important;border:0!important;border-radius:0!important;
+  box-shadow:none!important;color:#087c70!important;
+}
+.home-screen .bottom-nav a.active span{
+  color:#087c70!important;background:transparent!important;
+}
+.home-screen .home-category{min-height:82px!important}
+.home-screen .category-icon{width:40px!important;height:40px!important}
+.home-screen .category-icon svg{width:28px!important;height:28px!important}
+.home-screen .home-category b{font-size:12px!important}
