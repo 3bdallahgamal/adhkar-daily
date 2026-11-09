@@ -1123,3 +1123,24 @@ body.app-body{margin:0;min-height:100vh;background:#f7f8f5;color:#18384a;font-fa
  position:fixed;left:50%;right:auto;bottom:0;
  transform:translateX(-50%);margin:0;z-index:30;
 }
+
+
+/* Align fixed bottom bar on both phone and wide preview widths */
+.home-screen.app-body .bottom-nav,
+.quran-screen.app-body .bottom-nav,
+.qibla-screen.app-body .bottom-nav{
+ position:fixed!important;left:0!important;right:0!important;bottom:0!important;
+ width:min(100%,440px)!important;transform:none!important;margin:0 auto!important;
+}
+.app-center-header .top-action svg,.home-app-header .top-action svg{
+ width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;
+ stroke-linecap:round;stroke-linejoin:round;
+}
+.bottom-nav a span svg{
+ display:block;width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:1.7;
+ stroke-linecap:round;stroke-linejoin:round;
+}
+.qibla-screen .kaaba-mark svg{
+ width:20px;height:20px;fill:none;stroke:#e5c977;stroke-width:1.5;
+ stroke-linecap:round;stroke-linejoin:round;
+}
