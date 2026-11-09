@@ -1,4 +1,4 @@
-const CACHE_NAME="adhkar-daily-v35";
+const CACHE_NAME="adhkar-daily-v36";
 const ASSETS=[
   "./",
   "./index.html",
@@ -19,6 +19,7 @@ const ASSETS=[
   "./style.css?v=33",
   "./style.css?v=34",
   "./style.css?v=35",
+  "./style.css?v=36",
   "./morning-scene.png",
   "./evening-scene.png",
   "./app-icon.svg",
